@@ -67,7 +67,7 @@
 		},
 		{
 			"id" : "14",
-			"name" : "Nail Club",
+			"name" : "Handgun",
 			"stat" : "+1fit"
 		},
 		{
@@ -1084,7 +1084,7 @@
 							"id" : "04",
 							"text" : "You run! Who knows if they’ve got clubs or guns, or if they can even catch you, but you don’t want to hear the odds!",
 							"effect" : "+1time;+1for",
-							"mod" : "%50>-2hp;%50>-2hp;"
+							"mod" : "%50>-2hp;%50>-2hp",
 							"dest" : "scn09"
 						},
 						{
@@ -1190,6 +1190,214 @@
 							"id" : "04",
 							"text" : "You meditate on your recent experiences, playing back the journey so far in your mind’s eye. Maybe you’d do a few things differently.",
 							"effect" : "+trt:22",
+							"dest" : "scn12"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id" : "10",
+			"picture" : "city4.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "Though you have no delusions of trying to eke out a living in this skeleton, you need to recover before the long road ahead. On the outskirts of the city, you find a half-covered house buried in the sand. Squeezing through the boarded windows, you are elated to find cans of food and stores of water! There is no sign of the previous occupant, however. During your respite...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You focus on treating your wounds properly - infection will kill you as sure as any bullet.",
+							"effect" : "+4time;+4hp;+1fit",
+							"dest" : "02"
+						},
+						{
+							"id" : "02",
+							"text" : "You take time to record your journey so far. Even if you don’t make it out of this, someone else might need your notes.",
+							"effect" : "+4time;+4ms;+1ten",
+							"dest" : "02"
+						},
+						{
+							"id" : "03",
+							"text" : "You try to cheer yourself up while resting by singing songs you remember hearing on the radio. All there now is static.",
+							"effect" : "+4time;+2ms;+2hp;+1ten",
+							"dest" : "02"
+						},
+						{
+							"id" : "04",
+							"text" : "You meditate on the strange things that have been happening to you on this long journey so far - only to realize that barely any time has passed at all.",
+							"effect" : "+2time;+2ms;+1unc",
+							"dest" : "02"
+						},
+						{
+							"id" : "05",
+							"text" : "You are restless and choose to instead take the fastest route out of this city.",
+							"dest" : "scn04"
+						},
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "Just as your respite is coming to an end and you think it best to move on, a strange occurrence befalls your little hovel. It starts with a crackling in the air, and a loud, low groan outside. Then a terrible pain in your head, like dozens of nails being forced out of your skull. The walls begin to sag, then visibly drip, as if they were made from tar. Trying to keep hold of your sanity...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You turn to your old radio, flicking through the channels to see if anyone, anyone at all is still out there.",
+							"effect" : "+1time;-2ms;+1for",
+							"dest" : "03"
+						},
+						{
+							"id" : "02",
+							"text" : "You concentrate on the pain, making it sharper, making it real. You feel the blood trickling down your nose and ears, and try to understand.",
+							"effect" : "+1time;-2hp;+1unc",
+							"dest" : "03"
+						},
+						{
+							"id" : "03",
+							"text" : "You crack a joke to yourself and laugh along. After all, this is pretty ridiculous, and there isn’t anything you can do about it.",
+							"effect" : "+1time;-1ms;-1hp;+1ten",
+							"mod" : "inv:18>+1hp",
+							"dest" : "03"
+						},
+						{
+							"id" : "04",
+							"text" : "You recite facts and solve math problems in your head. Even something this fucked up can’t screw with <i>math</i>.",
+							"effect" : "+2time;-1ms;+1acu",
+							"dest" : "03"
+						}
+						,
+						{
+							"id" : "05",
+							"text" : "You embrace it.",
+							"effect" : "-2ms;-2hp;+1unc;+1ten;+trt:23",
+							"req" : "ms<-3",
+							"dest" : "03"
+						}
+					]
+				},
+				{
+					"id" : "03",
+					"text" : "With the anomaly passed, you’re sure as hell going to leave now. Whatever dangers the city holds, they surely can’t hold a candle to whatever you just experienced. You’ve got a lot of walking ahead of you, though. While you pace down ruined streets and collapsed buildings, your mind begins to wander. As you walk...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You think about how you’ll relax and follow your true passions as soon as you’re in the promised sanctuary up north.",
+							"effect" : "+3time;+1ms;+1ten",
+							"dest" : "scn11"
+						},
+						{
+							"id" : "02",
+							"text" : "You realize that you can’t recall several weeks of your journey. Images and sounds that could not have happened take their place.",
+							"effect" : "+2time;-1ms;+1unc",
+							"dest" : "scn11"
+						},
+						{
+							"id" : "03",
+							"text" : "You keep careful track of each turn you make and how far you’ve traveled. Making a map would keep your mind sharp.",
+							"effect" : "+3time;+1acu;+inv:16",
+							"dest" : "scn11"
+						},
+						{
+							"id" : "04",
+							"text" : "You accidentally tumble down a large hole you would have seen if you had been paying attention. At least there’s something useful down here!",
+							"effect" : "+3time;-1hp;+1for;+inv:22",
+							"mod" : "%25>-3hp;%10>+inv:14",
+							"dest" : "scn11"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id" : "11",
+			"picture" : "cityD.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "Taking it slow as you are, the sights of the city’s fading heart begin to stir something within you. As you reach the limits of the ruined metropolis, the emotions grow stronger and stronger. While expressing yourself isn’t exactly high on the list of survival needs, you feel you need to do something. You realize...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You should really be writing all of this down. Even if you die, someone else might find it. Your death could mean something.",
+							"effect" : "+3time;+1ms;+1ten;+inv:23",
+							"dest" : "02"
+						},
+						{
+							"id" : "02",
+							"text" : "You should be making a map, just in case. No one has ever charted this route, to your knowledge. It might be a valuable investment.",
+							"effect" : "+2time;+1acu;+inv:24",
+							"dest" : "02"
+						},
+						{
+							"id" : "03",
+							"text" : "You should write a song about this. All of this. The struggles, the triumphs, the weird shit. Too bad you don’t have an instrument.",
+							"effect" : "+4time;+2ms;+1for;+inv:25",
+							"dest" : "02"
+						},
+						{
+							"id" : "04",
+							"text" : "You are complete as you are. No expression of your self could match the multitudes with you. You’ll leave your mark by existing.",
+							"effect" : "+1time;+1unc",
+							"dest" : "02"
+						}
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "Personal revelations handled, the world seems determined to re-assert itself as the primary obstacle you must contend with. The byways slithering their way through the bones of these buildings and homes are often crumbled, revealing the rusted rebar within. The empty space where the road used to be mocks you, blocking your path more than once. To get through...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You might be able to rig together a grappling hook of some kind using all the rusted cars around. It’ll take time, though.",
+							"effect" : "+4time;+1acu;+inv:26",
+							"dest" : "03"
+						},
+						{
+							"id" : "02",
+							"text" : "You can find a way around. Lots of walking, to be sure, but at least you won’t plummet to your death.",
+							"effect" : "+3time;+1fit",
+							"dest" : "03"
+						},
+						{
+							"id" : "03",
+							"text" : "You can jump these gaps. Worst case scenario you fall to your death, or gore yourself on rebar, or crack your head on the pavement.",
+							"effect" : "+1time;+1for",
+							"mod" : "%25>-8hp",
+							"dest" : "03"
+						},
+						{
+							"id" : "04",
+							"text" : "You don’t want to scavenge or take a detour, and you’re not dumb enough to jump. Guess it’s bridge-building time.",
+							"effect" : "+3time;+1ten",
+							"dest" : "03"
+						}
+					]
+				},
+				{
+					"id" : "03",
+					"text" : "As you leave the twisting roads behind you, the only sight you’re greeted by is the wasteland once again. Mountains cover the skyline to your left, and endless plains of sand stretch on to your right. Ahead of you are the rolling dunes of dust and rock, as welcoming as ever. Nothing to do but keep walking, keep following the signal. Your radio crackles to life as you try to tune it. As it does...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You hear the signal that brought you here, for the first time in weeks. The voice is clearer, the promise re-igniting a fire in your heart.",
+							"effect" : "+trt:24",
+							"dest" : "scn12"
+						},
+						{
+							"id" : "02",
+							"text" : "You hear a new broadcast. Faint, barely present through the noise, but it’s a human voice. There must be life out here after all.",
+							"effect" : "+trt:25",
+							"dest" : "scn12"
+						},
+						{
+							"id" : "03",
+							"text" : "You hear an old station still playing their advertisements and songs. They have little meaning to you, but are strangely comforting all the same.",
+							"effect" : "+trt:26",
+							"dest" : "scn12"
+						},
+						{
+							"id" : "04",
+							"text" : "You hear nothing but static. What were you expecting? There’s nothing out here, nothing but you. You laugh at the absurdity of it all.",
+							"effect" : "+trt:27",
 							"dest" : "scn12"
 						}
 					]
