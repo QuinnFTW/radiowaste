@@ -129,6 +129,21 @@
 			"id" : "26",
 			"name" : "Crude Grappling Hook",
 			"stat" : ""
+		},
+		{
+			"id" : "27",
+			"name" : "Broken Tech",
+			"stat" : ""
+		},
+		{
+			"id" : "28",
+			"name" : "Rusty Knife",
+			"stat" : ""
+		},
+		{
+			"id" : "29",
+			"name" : "Waterlogged Journal",
+			"stat" : ""
 		}
 	],
 	"traits" : [
@@ -1399,6 +1414,235 @@
 							"text" : "You hear nothing but static. What were you expecting? There’s nothing out here, nothing but you. You laugh at the absurdity of it all.",
 							"effect" : "+trt:27",
 							"dest" : "scn12"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id" : "12",
+			"picture" : "forest1.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[ACT 3]",
+							"dest" : "02",
+						}
+					]	
+				},
+				{
+					"id" : "02",
+					"text" : "The city begins to fade into your memory, just another segment of your journey lost to the horizon. Days turn into weeks of the same terrain, rock and dirt, trailing behind you. You sleep when you can, walk when you can’t, and your mind gives way to the monotony of it all. It is eventually broken, though, by the sight of a treeline not far from you. Barring your path, the trees are broken up by the many signposts set in front of them. Even you know the old world symbol for radiation that’s painted on them. You may not have a choice of whether or not to brave the forest, but you do have a choice as to how...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "Cut straight through the mess of trees and barely-living brush. Probably not safe, and you might run the risk of getting lost, but you’ll be out of here faster.",
+							"dest" : "scn13"
+						},
+						{
+							"id" : "02",
+							"text" : "Try to navigate the dirt roads and heavily worn trails to the north. Perhaps safer than blazing your own trail, but will not be the quickest route.",
+							"dest" : "scn15"
+						},
+						
+					]
+				},
+			]
+		},
+		{	
+			"id" : "13",
+			"picture" : "forest4.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "Despite the lack of greenery, the forest is deceptively thick. The trees have continued their growth, making navigating between them tricky and sometimes impossible. Adding to that, the land is becoming increasingly craggy and inclined. You’re out of breath and energy as the trees part, revealing a grove of sorts. Your joy quickly turns to despair as you see the reason for the grove - smoldering cracks in the rocks lick with flame, filling the grove with smoke. A building, half-burned, sits nearby. After some consideration...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You check out the burned building, hoping to find some abandoned supplies. Supplies not reduced to ash, that is.",
+							"effect" : "+1time;+1for",
+							"mod" : "%75>+inv:22;%25>+2fod",
+							"dest" : "02"
+						},
+						{
+							"id" : "02",
+							"text" : "You try to investigate the source of the devastation around you. Some extra caution is worth not being burned to a crisp, you think.",
+							"effect" : "+1time;-1hp;+1acu",
+							"dest" : "02"
+						},
+						{
+							"id" : "03",
+							"text" : "You charge through the clearing, not wanting to mess with any of this. You may be being irradiated, you don’t want to get incinerated too",
+							"effect" : "+1time;-1hp;+1ten",
+							"dest" : "02"
+						},
+						{
+							"id" : "04",
+							"text" : "You tune your old radio to pick up any hidden frequencies. If anywhere was going to have ghosts on the airwaves, it’s here.",
+							"effect" : "+1time;-1ms;+1unc",
+							"dest" : "02"
+						},
+						
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "Past the grove, the situation does not immediately improve. In fact, things are getting worse. The ground continues to smolder in pockets, the smoke becoming so thick it begins to obscure your vision. You know you have to travel this way, but you start to cough. As if stealing your sight wasn’t bad enough, this smoke threatens to steal your breath too. Thinking fast...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You tear up some of your clothing and make a crude mask. While it won’t keep the smoke out of your eyes, you won’t choke either.",
+							"effect" : "+2time;-1hp;+1acu",
+							"dest" : "03"
+						},
+						{
+							"id" : "02",
+							"text" : "You cover your face as best you can and blindly rush through. Pushing past trees and rocks, you run as fast as you can.",
+							"effect" : "+1time;-2hp;+1fit",
+							"dest" : "03"
+						},
+						{
+							"id" : "03",
+							"text" : "You douse your eyes and mouth with water, washing the worst of the smoke away, and continue to do so as you slowly push past the smoke.",
+							"effect" : "+1time;-2wat;+1ten",
+							"dest" : "03"
+						},
+						{
+							"id" : "04",
+							"text" : "You wander haphazardly through the smoke, trying to find pockets of breathable air. Each one is welcome, though they’re few and far between.",
+							"effect" : "+2time;+1for",
+							"mod" : "%50>-2hp",
+							"dest" : "03"
+						},
+						{
+							"id" : "05",
+							"text" : "Time for this thing to get some use! You put your gas mask on, and feel as if you’ve been transported to another world. The smoke shifts and stirs...",
+							"effect" : "+2time;+1unc;+trt:28",
+							"req" : "inv:22",
+							"dest" : "03"
+						},
+						
+					]
+				},
+				{
+					"id" : "03",
+					"text" : "Finally emerging from the thick clouds of smoke, you press deeper into the forest. Here, it seems, some life has actually begun to return. Bushes with little leaves and ferns start to appear. With no apparent dangers, it might be a good opportunity for scavenging. Even if there aren’t man-made supplies, nature can provide. As the foraging starts...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You make a whole-hearted attempt to grab up as much food as possible. There are even some small streams of clear-looking water you sip from.",
+							"effect" : "+3time;+1fit;+1fod;+1wat",
+							"dest" : "scn14"
+						},
+						{
+							"id" : "02",
+							"text" : "You gather some mushrooms and sweet-looking berries, and though you don’t know a thing about the local flora, you somehow don’t eat anything poisonous.",
+							"effect" : "+3time;+1for;+2fod",
+							"dest" : "scn14"
+						},
+						{
+							"id" : "03",
+							"text" : "You quickly realize you don’t have time for this, and these plants may be poisonous or carry radiation as well.",
+							"effect" : "+1time;+1ten",
+							"dest" : "scn14"
+						},
+						{
+							"id" : "04",
+							"text" : "You chow down on some funny-looking mushrooms and spend the next several hours in a daze of vivid dreams. When you awaken, you find only a few moments have passed.",
+							"effect" : "+2time;+1fod;+1unc",
+							"dest" : "scn14"
+						},
+						{
+							"id" : "05",
+							"text" : "You happen to spot a wonderful spot to set up camp. The grove is so idyllic, in fact, it almost makes you forget the world outside is a burned-up ruin..",
+							"effect" : "+4time;+1ms;+1fod;+1acu;+trt:29",
+							"req" : "inv:09",
+							"dest" : "scn14"
+						},
+					]
+				}
+			]
+		},
+		{
+			"id" : "14",
+			"picture" : "forest5.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "As you continue, the greenery around starts to grow thicker and thicker. The shades of green deepen, and soon you see the source. The trees part a second time, revealing a vast expanse of wetlands stretching before you. Thinking back to when you entered the forest, you consider that this water might be irradiated as well, to say nothing of what might dwell within. Seeing how you have no other way to go but forward...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You craft some makeshift stilts out of loose branches and vines to keep yourself out of the water. They repeatedly break, but do keep you dry.",
+							"effect" : "+2time;+1fit",
+							"mod" : "%25>-3hp",
+							"dest" : "02",
+						},
+						{
+							"id" : "02",
+							"text" : "You don’t dare put your life in the hands of some moldy cables, but you can scavenge the pylons for working circuits.",
+							"effect" : "+3time;+1acu;+inv:27",
+							"dest" : "02",
+						},
+						{
+							"id" : "03",
+							"text" : "You are looking up at the pylons when you trip, landing face-first in a puddle of water. Something glints in the mud when you stand up.",
+							"effect" : "+2time;+1for;-2hp;+inv:28",
+							"dest" : "02",
+						},
+						{
+							"id" : "04",
+							"text" : "You listen to the creaks and groans of the old metal and tarnished connectors. They mourn their walking brethren.",
+							"effect" : "+1time;-2ms;+1unc",
+							"dest" : "02",
+						},
+						{
+							"id" : "05",
+							"text" : "You think you might be able to use your grappling hook in a few spots, but only if you really trust in your construction skills and upper body strength.",
+							"effect" : "+4time;+2ms;+1fit;+1ten",
+							"req" : "inv:26",
+							"dest" : "02",
+						},
+					]
+				},
+				{				
+					"id" : "02",
+					"text" : "Almost out of the wetlands, you can see the edge of the forest not far beyond. However, before you can get your hopes up, something else catches your eye. A ripple in the waters just in front of you. You had hoped your thoughts of things living in the water was just a fantasy, but it seems to not be the case. Finding out what it is might be the last thing you do. Instead...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You resolve to find another way around. You’re tired and worn out, but you just can’t take any more risks.",
+							"effect" : "+2time;-3ms;+1ten",
+							"dest" : "scn17",
+						},
+						{
+							"id" : "02",
+							"text" : "You rush through! No looking back, no paying attention to the sharp pain in your legs, just running!",
+							"effect" : "+1time;-4hp;+1fit",
+							"dest" : "scn17",
+						},
+						{
+							"id" : "03",
+							"text" : "You start putting together a bridge out of fallen metal and branches. You’re sore by the end, but do have a safe way to cross.",
+							"effect" : "+2time;-2hp;-1ms;+1acu",
+							"dest" : "scn17",
+						},
+						{
+							"id" : "04",
+							"text" : "You crank your radio, tuning it to emit a frequency so high it makes your ears nearly bleed. Seems to scare off the creatures, though.",
+							"effect" : "+2ms;-2ms;-1hp;+1unc",
+							"dest" : "scn17",
+						},
+						{
+							"id" : "05",
+							"text" : "The journal you found details how this lake used to be home to a particular breed of leech, and how they were easily distracted with a bit of raw meat.",
+							"effect" : "+2time;-1fod;+1acu;+1for",
+							"req" : "inv:29",
+							"dest" : "scn17",
 						}
 					]
 				}
