@@ -1,0 +1,991 @@
+{
+	"inventory" : [
+		{
+			"id" : "01",
+			"name" : "Old Radio",
+			"stat" : ""
+		},
+		{
+			"id" : "02",
+			"name" : "Rusty Canteen",
+			"stat" : ""
+		},
+		{
+			"id" : "03",
+			"name" : "Cracked Sunglasses",
+			"stat" : "+1ten"
+		},
+		{
+			"id" : "04",
+			"name" : "Heavy Rags",
+			"stat" : ""
+		},
+		{
+			"id" : "05",
+			"name" : "Toy Car",
+			"stat" : ""
+		},
+		{
+			"id" : "06",
+			"name" : "Glass Knife",
+			"stat" : "+1fit"
+		},
+		{
+			"id" : "07",
+			"name" : "Hide Armor",
+			"stat" : ""
+		},
+		{
+			"id" : "08",
+			"name" : "Trusty Canteen",
+			"stat" : "+1for"
+		},
+		{
+			"id" : "09",
+			"name" : "Makeshift Tent",
+			"stat" : ""
+		},
+		{
+			"id" : "10",
+			"name" : "Handmade Tent",
+			"stat" : ""
+		},
+		{
+			"id" : "11",
+			"name" : "Old World Money",
+			"stat" : ""
+		},
+		{
+			"id" : "12",
+			"name" : "Strange Tech",
+			"stat" : ""
+		},
+		{
+			"id" : "13",
+			"name" : "Strange Memento",
+			"stat" : "+1unc"
+		},
+		{
+			"id" : "14",
+			"name" : "Nail Club",
+			"stat" : "+1fit"
+		},
+		{
+			"id" : "15",
+			"name" : "Scrap Metal Armor",
+			"stat" : "+1ten"
+		},
+		{
+			"id" : "16",
+			"name" : "Rough Map",
+			"stat" : ""
+		},
+		{
+			"id" : "17",
+			"name" : "Baseball Bat",
+			"stat" : "+1fit"
+		},
+		{
+			"id" : "18",
+			"name" : "Football Pads",
+			"stat" : "+1fit"
+		},
+		{
+			"id" : "19",
+			"name" : "Antibiotics",
+			"stat" : ""
+		},
+		{
+			"id" : "20",
+			"name" : "Radio Effigy",
+			"stat" : "+1unc"
+		},
+		{
+			"id" : "21",
+			"name" : "Mark of Passage",
+			"stat" : "+1for"
+		},
+		{
+			"id" : "22",
+			"name" : "Gas Mask",
+			"stat" : ""
+		},
+		{
+			"id" : "23",
+			"name" : "Personal Journal",
+			"stat" : ""
+		},
+		{
+			"id" : "24",
+			"name" : "Rough Map",
+			"stat" : ""
+		},
+		{
+			"id" : "25",
+			"name" : "Objectively Shitty Poetry",
+			"stat" : "+1ten"
+		},
+		{
+			"id" : "26",
+			"name" : "Crude Grappling Hook",
+			"stat" : ""
+		}
+	],
+	"traits" : [
+		{
+			"id" : "01",
+			"name" : "Channel Surfer"
+		},
+		{
+			"id" : "02",
+			"name" : "Signal Chaser"
+		},
+		{
+			"id" : "03",
+			"name" : "Animal Perception"
+		},
+		{
+			"id" : "04",
+			"name" : "Night Owl"
+		},
+		{
+			"id" : "05",
+			"name" : "Not an Orphan"
+		},
+		{
+			"id" : "06",
+			"name" : "Irradiated Future"
+		},
+		{
+			"id" : "07",
+			"name" : "New-World Pariah"
+		},
+		{
+			"id" : "08",
+			"name" : "Survival Instinct"
+		},
+		{
+			"id" : "09",
+			"name" : "Encyclopedic Memory"
+		},
+		{
+			"id" : "10",
+			"name" : "Hard Luck"
+		},
+		{
+			"id" : "11",
+			"name" : "Clean Conscious"
+		},
+		{
+			"id" : "12",
+			"name" : "Airwave Ghost"
+		},
+		{
+			"id" : "13",
+			"name" : "Lucky Break"
+		},
+		{
+			"id" : "14",
+			"name" : "Wasteland Knowledge"
+		},
+		{
+			"id" : "15",
+			"name" : "Well Rested"
+		},
+		{
+			"id" : "16",
+			"name" : "Scavenger Sense"
+		},
+		{
+			"id" : "17",
+			"name" : "Deep Thoughts"
+		},
+		{
+			"id" : "18",
+			"name" : "Static Scream"
+		},
+		{
+			"id" : "19",
+			"name" : "Musical Soul"
+		},
+		{
+			"id" : "20",
+			"name" : "Always Busy"
+		},
+		{
+			"id" : "21",
+			"name" : "Creature Comfort"
+		},
+		{
+			"id" : "22",
+			"name" : "Ingrained Regret"
+		},
+		{
+			"id" : "23",
+			"name" : "Waveform Mind"
+		},
+		{
+			"id" : "24",
+			"name" : "Light at the End"
+		},
+		{
+			"id" : "25",
+			"name" : "New World Hope"
+		},
+		{
+			"id" : "26",
+			"name" : "Old World Blues"
+		},
+		{
+			"id" : "27",
+			"name" : "Static Solipsism"
+		}
+	],
+	"scenes" : [
+		{
+			"id" : "00",
+			"picture" : "bones.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "Your bones lie scattered on the desolate wastes, the only memory of your passing a slowly rusting radio that lies next to your corpse. Still spitting static, the last song to play you out...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[RESTART]",
+							"dest" : "01",
+						},
+						{
+							"id" : "02",
+							"text" : "[EXIT]",
+							"dest" : "esc",
+						}
+					]
+				}
+			]
+		},
+		{
+			"id" : "01",
+			"picture" : "radio1.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[ACT 1]",
+							"dest" : "02",
+						}
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "The sun scorches your back. The wind tears at your clothes and flings dust into your eyes. One step at a time, you cross the endless stretch of sand and rock in front of you. North. Away from the desert you have called home all your life. Towards the feeble, flickering hope of a better life.",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[CONTINUE]",
+							"dest" : "03",
+						},
+						
+					]
+				},
+				{
+					"id" : "03",
+					"text" : "A signal bouncing in the air, faint and spotty, is your sole guide throughout this wasteland. When you first caught it, the words were barely understandable through the auditory underbrush of static. It spoke of a haven, of a place with food, water, and shelter for those that could make the journey, and pass the gate. What choice did you have, but to hope, and to follow it?",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[CONTINUE]",
+							"dest" : "04",
+						},
+						
+					]
+				},
+				{
+					"id" : "04",
+					"text" : "And now you stumble, lips peeling and stomach threatening to cave in on itself like a black hole. Your frayed boot hits a stray rock. Weak as they are, your legs don’t have the strength to keep you upright, and you tumble towards the ground. That rock might well become your tombstone, unless...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "Your reflexes, trained from working with delicate and dangerous machinery, kick in and stop yourself before you hit the rocks.",
+							"effect" : "+1ms;+1fit",
+							"dest" : "05",
+						},
+						{
+							"id" : "02",
+							"text" : "You get several nasty scrapes and bruises on the jagged rocks, but the sight of your own blood only doubles your resolve.",
+							"effect" : "-1hp;+1ms;+1ten",
+							"dest" : "05",
+						},
+						{
+							"id" : "03",
+							"text" : "You take the fall, but out of the corner of your eye you spy a slightly rusted canteen lying between the stones, glinting in the light.",
+							"effect" : "-1hp;+1for;+inv:02",
+							"dest" : "05",
+						},
+						{
+							"id" : "04",
+							"text" : "You fall, and fall, and fall... and then you are not falling. You are lying in a pool of brackish, foul water. You head pounds.",
+							"effect" : "-1ms;+1unc",
+							"dest" : "05",
+						},
+					]
+				},
+				{
+					"id" : "05",
+					"text" : "Stumbling away from your would-be grave, your mind now turns to the gnawing of your gut. Your provisions ran out roughly a week ago, if the sun can still be trusted. Despite your desperate need, little more than scrub brush emerges from the sand and stone. There’s only one way out of this...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You recall that certain desert plants can store water and nutrients in their roots during drought! All you need to do now is dig.",
+							"effect" : "+1acu;+2fod;+2wat",
+							"dest" : "06",
+						},
+						{
+							"id" : "02",
+							"text" : "You keep an eye out for any desiccated remains of creatures that were just slightly more unlucky than you. You know your gut can deal with it.",
+							"effect" : "+1fit;+2fod;+2wat",
+							"dest" : "06",
+						},
+						{
+							"id" : "03",
+							"text" : "You happen to recall a dream you had long ago. A small crevice not far from here. An unlucky traveler trapped by a boulder. Their cries for help were never answered.",
+							"effect" : "-2ms;+1unc;+3fod;+3wat",
+							"dest" : "06",
+						},
+						{
+							"id" : "04",
+							"text" : "You use your radio to scan across the commonly used frequencies. there’s a chance, a small chance, that there’s someone out here.",
+							"effect" : "+1for;+1fod;+1wat;+trt:01",
+							"dest" : "06",
+						},
+					]
+				},
+				{
+					"id" : "06",
+					"text" : "With water absent and food solved for the present, there’s only one problem keeping you from moving on right now - that damn sun. Blinding your vision, burning your skin, and forcing what little water you drank from your body. Scavenging might turn up some of what you need, but never all of it. As the searching begins...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You prioritize finding something to keep the sun out of your eyes. Shaded glasses, a hat, anything so you don’t wander blind.",
+							"effect" : "+1acu;+inv:03",
+							"dest" : "scn02",
+						},
+						{
+							"id" : "02",
+							"text" : "You know that letting your skin bear the sun’s full fury is a terrible idea. Get some rags and you should be able to cover yourself.",
+							"effect" : "+1fit;+inv:04",
+							"dest" : "scn02",
+						},
+						{
+							"id" : "03",
+							"text" : "You have got to stay cool, but there’s no easy solution to that. Having a surplus of water would keep your will strong, though.",
+							"effect" : "+1ten;+2wat",
+							"dest" : "scn02",
+						},
+						{
+							"id" : "04",
+							"text" : "You say ‘weather-shmeather!’. It’ll change eventually, what you need to worry about right now is keeping your stomach in line.",
+							"effect" : "-1hp;+1for;+4fod",
+							"dest" : "scn02",
+						},
+					]
+				}
+			]
+		},
+		{
+			"id" : "02",
+			"picture" : "radio2.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "With death averted, your senses are starting to come back to you. The first thing you notice is the choking dryness of your throat. It is either divine providence, or a cruel joke, that places a dilapidated gas station just at the limit of your vision, across the cracked soil of a long-dead riverbed. When you pick over the bones of the old world...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You prioritize finding any survival supplies. You will make it out of this, damn whatever fates have cursed you.",
+							"effect" : "+1fit;+1fod;+2wat",
+							"dest" : "02",
+						},
+						{
+							"id" : "02",
+							"text" : "You’ll take whatever you stumble across. If you need it, it will find its way to you.",
+							"effect" : "+1for;+1fod;+1wat;+inv:05",
+							"dest" : "02",
+						},
+						{
+							"id" : "03",
+							"text" : "You just know some desperate animal (or human) has made its lair in there. You’ll do what you have to...",
+							"effect" : "-2hp;+1fit;+2wat;+inv:06;+inv:07",
+							"mod" : "inv:04>+1hp",
+							"dest" : "02",
+						},
+						{
+							"id" : "04",
+							"text" : "You enter the station, only to find the shelves lightly stocked, the lights shining in bright fluorescence. The speakers even play a melody. It makes your ears ring.",
+							"effect" : "-1ms;+1unc;+3fod;+1wat",
+							"dest" : "02",
+						},
+						{
+							"id" : "05",
+							"text" : "You take some time to fill this rusty thing up! Now you shouldn’t die of thirst, as you can always take a sip from your (t)rusty canteen.",
+							"effect" : "+1acu;+3wat;-inv:02;+inv:08",
+							"dest" : "02",
+							"req" : "inv:02"
+						},
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "The supports of the station’s few remaining walls groan as you leave. Whether or not you want to stay, you have to keep moving. To stay would be to invite death back in. However, that leaves the trouble of finding shelter for the many nights and storms you must weather. It’s a simple problem, with a tricky solution each time...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You can make a simple enough tent out of old tarp, some rope, and rusty spikes. The materials should be easy enough to find, even out here.",
+							"effect" : "-1fod;-1wat;+1acu;+inv:09",
+							"dest" : "03",
+						},
+						{
+							"id" : "02",
+							"text" : "You keep moving. Day. Night. Storm. It doesn’t matter. You need to follow the signal. Rest is for the weak.",
+							"effect" : "-1hp;-1ms;+1ten;+trt:02",
+							"dest" : "03",
+						},
+						{
+							"id" : "03",
+							"text" : "You’ll find shelter as you move, as the beasts of these lands do. Let your instincts take over. Tap into the animal brain.",
+							"effect" : "-2ms;+1fit;+trt:03",
+							"dest" : "03",
+						},
+						{
+							"id" : "04",
+							"text" : "You have always felt most at home under the stars. Sometimes your parents would find you, late at night, just staring up at the infinite cosmos.",
+							"effect" : "-2hp;+1unc;+trt:04",
+							"dest" : "03",
+						},
+						{
+							"id" : "05",
+							"text" : "You almost forgot, your parent’s homemade tent that they made specifically for your long journey. It still smells of your father’s fresh-baked bread. ",
+							"effect" : "+1for;+inv:10;+trt:05",
+							"dest" : "03",
+							"req" : "ms>-1"
+						},
+					]
+				},
+				{
+					"id" : "03",
+					"text" : "Survival, supplies, and shelter are all handled for the time being. As you journey ever northward, your mind finally has time to handle all of the thoughts you had pushed to the wayside. Several nagging doubts start to surface. Why are you doing this? An answer takes some time to form in your head. When it does...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You calmly reassure yourself that despite all of these struggles, there’s a solid reason you’re headed north - the sanctuary.",
+							"effect" : "+2ms;+1acu",
+							"dest" : "scn03",
+						},
+						{
+							"id" : "02",
+							"text" : "You know there was nothing left for you down south. You would have died down there if you had stayed. At least now you’ve got a chance.",
+							"effect" : "+1ms;+1ten",
+							"dest" : "scn03",
+						},
+						{
+							"id" : "03",
+							"text" : "You chuckle to yourself. Why do we do anything? Maybe this will be a wash, but you’ve no way of knowing that until it’s over.",
+							"effect" : "-1ms;+1for",
+							"dest" : "scn03",
+						},
+						{
+							"id" : "04",
+							"text" : "You sigh, letting the doubts sit with you. There’s a fine fatalism to knowing you’re doing something for no reason, even if it does hurt.",
+							"effect" : "-2ms;+1unc",
+							"dest" : "scn03",
+						},
+						{
+							"id" : "05",
+							"text" : "You’re too cool to worry about stupid things like the meaning of your life or purpose for existing. You think you’ll just bench press some rocks instead.",
+							"effect" : "+1fit;+trt:06",
+							"dest" : "scn03",
+							"req" : "inv:03"
+						},
+					]
+				}
+			]
+		},
+		{
+			"id" : "03",
+			"picture" : "radio3.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[ACT 2]",
+							"dest" : "02"
+						}
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "Some time later, you’ve lost count of the days, the horizon is marred by the jagged peaks of an old world city. It nearly stretches across your entire view. Though it looks like it should be making audio spikes as large as its skyscrapers on your radio, it remains silent. Time to make a choice…",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "Travel down the ruins of the main streets and highways. The fastest, and probably most dangerous choice.",
+							"dest" : "scn04"
+						},
+						{
+							"id" : "02",
+							"text" : "Weave through the shaded alleys and backroads. Slower, but has the least chance of danger.",
+							"dest" : "scn06"
+						},
+						{
+							"id" : "03",
+							"text" : "Scavenge through the ruined stores and warehouses. Very slow, slightly risky, but you might find something useful.",
+							"dest" : "scn08"
+						},
+						{
+							"id" : "04",
+							"text" : "Find a secure location and take some time to rest. Exceedingly slow and not risky at all.",
+							"dest" : "scn10"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id" : "04",
+			"picture" : "city1.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "The main roads, strangled as they are with the wreckage of old machinery, are still the fastest route through the dead city. As you get closer, the rusted buildings rise like fingers, tearing through the gray clouds above. Soon you’re among them, the low brush of mangled cars turning your theoretically fast progress into slow work. Frustrated...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You channel your simian instincts and take to leaping from the top of one rusted hunk to another.",
+							"effect" : "+1fit",
+							"mod" : "%50>-2hp",
+							"dest" : "02"
+						},
+						{
+							"id" : "02",
+							"text" : "You carefully navigate through the sea of jagged metal. There’s no point in getting injured by being careless.",
+							"effect" : "+1time;+1acu",
+							"dest" : "02"
+						},
+						{
+							"id" : "03",
+							"text" : "You take your anger out on the metal, kicking and crushing anything in your way.",
+							"effect" : "-1hp;+1ten",
+							"dest" : "02"
+						},
+						{
+							"id" : "04",
+							"text" : "You take a deep breath and accept that while this might not be as fast as you had hoped, it is certainly faster than any of your other options.",
+							"effect" : "+1time;+1ms;+1for",
+							"dest" : "02"
+						},
+						{
+							"id" : "05",
+							"text" : "You realize that if you’re going to have to slow down, you might as well see what treasures this city still holds.",
+							"dest" : "scn06"
+						},
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "Passing a small mountain of crashed cars and collapsed buildings, you’re surprised to see a small plume of smoke rising from a clearing just off the road. You’ll have to cross their path one way or another. Approaching, you see a single individual, lazily tending the fire, with a makeshift spit turning a hunk of some meat. Catching sight of you, they raise a bandaged arm to wave you over. When you walk over...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You threaten the waster to hand over everything they’ve got, ready to fight them for it if need be.",
+							"effect" : "+1time;-2hp;+1fit;+1fod;+inv:11;+inv:12",
+							"mod" : "inv:06>+1hp",
+							"dest" : "03"
+						},
+						{
+							"id" : "02",
+							"text" : "You calmly sit down across from them, enjoy some company and a meal, then keep on going.",
+							"effect" : "+1ms;+1fod;+1ten",
+							"dest" : "03"
+						},
+						{
+							"id" : "03",
+							"text" : "You pull out a deck of old playing cards and suggest that the stranger plays a few games with you. With stakes, of course.",
+							"effect" : "+2time;+1for;+1fod",
+							"mod" : "%50>-1wat;%50>+2wat",
+							"dest" : "03"
+						},
+						{
+							"id" : "04",
+							"text" : "You probe the individual with questions about where they came from and why they’re bandaged so strangely.",
+							"effect" : "+1time;-1ms;+1unc;+1fod;+inv:13",
+							"dest" : "03"
+						},
+						{
+							"id" : "05",
+							"text" : "You are surprised when the stranger mistakes you for someone else, hands you a sealed briefcase, and leaves their camp behind. Looking inside you find...",
+							"effect" : "+1acu;+inv:11;+inv:12;+inv:14",
+							"dest" : "03",
+							"req" : "inv:04"
+						},
+					]
+				},
+				{
+					"id" : "03",
+					"text" : "The road through the city is long, but you’ve reached the epicenter. The towering ruins stretch to the very edge of your vision, almost tricking your eyes into thinking they’re dripping down from the sky. As your gaze falls back down to the road, you begin to hear a loud crashing sound, repeating and getting closer. The groan of metal twisting gives it away - a Pylon Walker. There’s no time to think...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You run as fast as you can, as far as you can. Maybe you can outrun the terrible siren and streaks of deadly electricity...",
+							"effect" : "-3hp;-1ms;+1fit",
+							"mod" : "inv:07>+1hp",
+							"dest" : "scn05"
+						},
+						{
+							"id" : "02",
+							"text" : "You need to find a safe, dark place to hide. Who knows how long it will take to pass, but you can’t be caught in the open.",
+							"effect" : "+3time;-2ms;+1acu",
+							"dest" : "scn05"
+						},
+						{
+							"id" : "03",
+							"text" : "You don’t have anything to fear from this metal monstrosity. The lightning will cleanse you like baptismal water.",
+							"effect" : "+1time;-3hp;-2ms;+1unc",
+							"dest" : "scn05"
+						},
+						{
+							"id" : "04",
+							"text" : "You just need to remain calm. Find a side road to travel down for right now, where it can’t reach.",
+							"effect" : "+2time;-2hp;-1ms;+1ten",
+							"dest" : "scn05"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id" : "05",
+			"picture" : "cityA.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "The creaks and mournful groans of the Walker fade slowly, tauntingly. As the skies part and illuminate the cracked and bleeding road ahead of you, you’re shocked to find yourself near the end of the towering city around you. Just one final push, but of course it can’t be that easy. A pack of bandits have established a camp here, on the safer outskirts. To get past them...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You have to sneak. Crawling under rusted cars, sticking to the oil-black shadows, they’ll never know you were even here.",
+							"effect" : "+2time;-1ms;+1fit",
+							"dest" : "02"
+						},
+						{
+							"id" : "02",
+							"text" : "You have to fight. With nail and tooth, just like the wild animal you’ve been reduced to. Or a weapon, if you’re lucky.",
+							"effect" : "+2time;-5hp;+1ten;+2fod;+2wat;+inv:15;+inv:16",
+							"mod" : "inv:06>+2hp;inv:14>+2hp;",
+							"dest" : "02"
+						},
+						{
+							"id" : "03",
+							"text" : "You have to negotiate. Y’all are still capable of rational thought and discourse, even if you may not look it in the slightest.",
+							"effect" : "+1time;+1acu;-2fod;-2wat",
+							"dest" : "02"
+						},
+						{
+							"id" : "04",
+							"text" : "You just have to walk. You’re a half-starved, wild-eyed scavenger following a static-filled radio signal. Maybe they’ll take pity on you?",
+							"effect" : "+1time;-2hp;+1for;+trt:07",
+							"dest" : "02"
+						}
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "As the bandit camp fades from view, you’re left with just one last stretch of asphalt in front of you. However, the light of day is quickly fading, so you decide to hole up somewhere and get a few winks of sleep while you still have the option of shelter. While there are several kinds of shelter available...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You decide to make this a quick break, just nestle up against a wall with some cardboard for bedding, and nod off.",
+							"effect" : "+1time;-1hp;-1ms;+1fit",
+							"dest" : "03"
+						},
+						{
+							"id" : "02",
+							"text" : "You go for a bit more comfortable sleep, and find a busted-up old mattress to sleep on in a half-collapsed apartment.",
+							"effect" : "+2time;+1hp;+1ten",
+							"dest" : "03"
+						},
+						{
+							"id" : "03",
+							"text" : "You take your time to find somewhere safe, where you can make a real soft nest for a few hours and take a load off.",
+							"effect" : "+3time;+1hp;+2ms;+1acu",
+							"dest" : "03"
+						},
+						{
+							"id" : "04",
+							"text" : "You try to sleep in many different places, but are plagued by awful dreams, visions that terrorize you and keep you awake..",
+							"effect" : "+1time;-3ms;+1unc",
+							"dest" : "03"
+						},
+						{
+							"id" : "05",
+							"text" : "You find a perfect place to pitch your tent. Out of the way and out of the elements, and sleep extremely soundly.",
+							"effect" : "+2time;+2hp;+2ms;+1for",
+							"dest" : "03",
+							"req" : "inv:09;inv:10"
+						},
+					]
+				},
+				{
+					"id" : "03",
+					"text" : "With dawn’s light, you finally emerge from the skeletal corpse of the city. The familiar waste of sand and rock is scattered before you, the dry air blowing another layer of dirt onto your skin. You begin walking, but not long after your departure from the city, the skies darken above you. Clouds gather in great clumps, and soon begin their downpour. Greeted by the rain...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You realize you have to take advantage of this situation and gather as much potable water as possible. What a lucky break!",
+							"effect" : "+trt:08",
+							"mod" : "inv:07>+1hp",
+							"dest" : "scn12"
+						},
+						{
+							"id" : "02",
+							"text" : "You grow panicked, remembering tales of acidic rain that could melt the flesh from bone. You rush to find shelter, quickly!",
+							"effect" : "+trt:09",
+							"dest" : "scn12"
+						},
+						{
+							"id" : "03",
+							"text" : "You shake your head, knowing that your next few hours of walking will be with sodden boots and chafing undergarments.",
+							"effect" : "+trt:10",
+							"dest" : "scn12"
+						},
+						{
+							"id" : "04",
+							"text" : "You simply let it wash over you, letting the rain cleanse your body and soul. The trials of your journey run off of you like so much dirt.",
+							"effect" : "+trt:11",
+							"dest" : "scn12"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id" : "06",
+			"picture" : "city2.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "The back streets and alleys are winding and frequently blocked, but much safer than wandering in the open. This city might simply be playing dead, ready to come to life and end yours. These thoughts occupy your mind, and before you know it, you’re completely turned around. Navigating this maze means...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You need to get a high vantage point, and chart a course before diving back in. Making a map of your travels could be useful in the future.",
+							"effect" : "+2time;+1acu;+inv:16",
+							"dest" : "02"
+						},
+						{
+							"id" : "02",
+							"text" : "You just keep walking. If you’re meant to get somewhere, you’ll end up there eventually.",
+							"effect" : "+1for",
+							"mod" : "%50>+3time",
+							"dest" : "02"
+						},
+						{
+							"id" : "03",
+							"text" : "You’re going to have to get comfortable with climbing large mounds of rusting metal. Hope you aren’t afraid of tetanus.",
+							"effect" : "+1time;+1fit",
+							"mod" : "%50>-1hp",
+							"dest" : "02"
+						},
+						{
+							"id" : "04",
+							"text" : "You can’t get discouraged. You’ll keep trying as many times as it takes to get out of here.",
+							"effect" : "+2time;+1ten",
+							"dest" : "02"
+						},
+						{
+							"id" : "05",
+							"text" : "You accept that you’re far too tired to continue with this path, and have to find somewhere to rest for a while.",
+							"dest" : "scn10"
+						},
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "Coming to another dead end, you turn around only to find an open door off to your side. You must have missed it when you first walked down this alleyway. Thankful that you don’t have to backtrack, you happily pass through the doorway. As your eyes adjust, you find yourself standing in what was once some kind of computer processing room. Now...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You move carefully through the room, making sure not to touch anything. Who knows what traps are still set in here.",
+							"effect" : "+3time;+1acu",
+							"dest" : "03"
+						},
+						{
+							"id" : "02",
+							"text" : "You can make up some time with this shortcut, time to breeze through this building and make it to the next block!",
+							"effect" : "+1time;-2hp;+1fit",
+							"dest" : "03"
+						},
+						{
+							"id" : "03",
+							"text" : "You take some time to scavenge whatever you can from this goldmine of tech and old world secrets.",
+							"effect" : "+3time;-1hp;+1for;+inv:12",
+							"dest" : "03"
+						},
+						{
+							"id" : "04",
+							"text" : "You try to navigate through the rows of computers, only to find the space repeating itself over, and over, and over...",
+							"effect" : "+2time;-1ms;+1unc",
+							"dest" : "03"
+						}
+					]
+				},
+				{
+					"id" : "03",
+					"text" : "Having probably covered miles of alleys and buildings by this point, your suspicions seem to be proven right - this is going to take a while. Just as you try to console yourself that this path seems without danger, though, you begin to hear a strange sound coming from ahead of you. Static, dialtones, and the click of electrodes. Radioheads, has to be. To get past them...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You tune your radio to emit a shrouding frequency, letting you pass by the monstrosities undetected. It isn’t pleasant on the ears.",
+							"effect" : "+2time;-2ms;+1acu;+trt:12",
+							"dest" : "scn05"
+						},
+						{
+							"id" : "02",
+							"text" : "You take your time to sneak up on each individual Broadcaster and Emitter, disabling them with some solid blows.",
+							"effect" : "+3time;+1fit",
+							"dest" : "scn05"
+						},
+						{
+							"id" : "03",
+							"text" : "You freeze up, paralyzed with indecision. Completely silent, you just do nothing for a while. Luckily, they wander off after several hours.",
+							"effect" : "+3time;+1for",
+							"dest" : "scn05"
+						},
+						{
+							"id" : "04",
+							"text" : "You open your mouth wide, letting a horrible noise carry you past them. They know the sound. They know you.",
+							"effect" : "+1time;-2ms;+1unc",
+							"dest" : "scn05"
+						},
+						{
+							"id" : "05",
+							"text" : "You ready yourself for a confrontation, satisfied that you can make it through this without a scratch. However, when you open your eyes, they are gone.",
+							"effect" : "+2time;+1ten",
+							"req" : "ms>0",
+							"dest" : "scn05"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id" : "07",
+			"picture" : "cityB.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "With the sounds of the Radioheads disappearing behind you, the city once again falls deathly silent. What follows is the most uneventful day of scurrying around the remains of buildings and streets like a cockroach or maggot. Beating back the dreary silence, you find yourself humming a tune, your radio churning out nothing but static. Your surroundings take on a bit more color as...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You tap your foot in time with a strong baseline, feeling the rhythm run through you like a current. It keeps your mind and body focused.",
+							"effect" : "+1time;+1ms;+1fit",
+							"dest" : "02"
+						},
+						{
+							"id" : "02",
+							"text" : "You whistle a catchy melody, the same few notes on repeat in your mind. The monotony brings you comfort. Expectable, continuous.",
+							"effect" : "+1time;+1ms;+1acu",
+							"dest" : "02"
+						},
+						{
+							"id" : "03",
+							"text" : "You make up a little song, hearing it clear in your mind. Maybe one day you’ll find an instrument and be able to actually play it. Hopefully.",
+							"effect" : "+1time;+1ms;+1ten",
+							"dest" : "02"
+						},
+						{
+							"id" : "04",
+							"text" : "You hear a song in the static. The violent hissing almost pleases you with its unexpected breaks and spikes. Wild, inhuman. You.",
+							"effect" : "+1time;+1ms;-1unc",
+							"dest" : "02"
+						},
+						{
+							"id" : "05",
+							"text" : "You begin to tear up, your radio being the one thing you thought you could count on. Sobbing, you suddenly hear the static break and the signal come through.",
+							"effect" : "+1time;+1for;=ms0",
+							"req" : "ms<-3",
+							"dest" : "02"
+						}
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "Clambering to the top of a veritable mountain of collapsed buildings, you can see across the last stretch of the city in front of you. The ruins are thinning out, the sand and dust re-emerging from the landscape to swallow them whole. However, between you and the wastes are a series of dangerously steep drops. To get down...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You need to take your time, find stable footing, and climb. You refuse to die to some loose gravel, not now, not so close to the end.",
+							"effect" : "+3time;+1fit",
+							"dest" : "03"
+						},
+						{
+							"id" : "02",
+							"text" : "You can just take the fastest route, safety be damned. With the end in sight, your body will just have to cope with the dangers.",
+							"effect" : "+1time;-2hp;+1ten",
+							"dest" : "03"
+						},
+						{
+							"id" : "03",
+							"text" : "You will need to climb, but there might still be supplies hidden under all this rubble. Taking the time to search is important.",
+							"effect" : "+4time;+1for",
+							"mod" : "%50>+3fod;%75>+2wat;%25>+1wat",
+							"dest" : "03"
+						},
+						{
+							"id" : "04",
+							"text" : "You just need to take the elevator. You know, the elevator, right over there? The light is on and everything. Just step inside.",
+							"effect" : "+1time;-2ms;+1unc",
+							"dest" : "03"
+						}
+					]
+				},
+				{
+					"id" : "03",
+					"text" : "Having made it down the slope of concrete and rebar, you are almost instantly greeted by the crunch of sand under your boots. You had almost forgotten what it felt like, compared to hard asphalt and rubble. You did it. You escaped that labyrinthine mess of a city in one piece. In an almost comical stroke of good luck, your exit seems to have spit you out just a few hundred yards from a dusty patch of green growth - an oasis! When you rush over...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You calm your excitement, the first step is to test the water’s potability, then boil it, <i>then</i> drink it. No dying of dysentery today!",
+							"effect" : "+trt:14",
+							"dest" : "scn12"
+						},
+						{
+							"id" : "02",
+							"text" : "You ignore the pool of water and instead get to work taking a much-earned nap under the scraggly tree nearby.",
+							"effect" : "+trt:15",
+							"dest" : "scn12"
+						},
+						{
+							"id" : "03",
+							"text" : "You pay no mind to the natural wonders and instead start searching for any supplies others may have left behind. Treasure awaits!",
+							"effect" : "+trt:16",
+							"dest" : "scn12"
+						},
+						{
+							"id" : "04",
+							"text" : "You plunge yourself into the brackish water, clothes and all. Feeling the water cover you, you’ve never known such ecstasy before.",
+							"effect" : "+trt:17",
+							"dest" : "scn12"
+						}
+					]
+				}
+			]
+		}
+	]
+}

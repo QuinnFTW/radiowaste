@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbpc4tsfn1j7b"]
+
+[ext_resource type="Script" path="res://src/intro_controller.gd" id="1_6lvcs"]
+[ext_resource type="FontFile" uid="uid://cdxdc35xww8br" path="res://fnt/whitrabt.ttf" id="1_mqjra"]
+[ext_resource type="RichTextEffect" uid="uid://d1cvchqrtacfk" path="res://fnt/type_effect.tres" id="3_cw53f"]
+[ext_resource type="AudioStream" uid="uid://b23k047b7ly05" path="res://snd/wasteland_windy.mp3" id="3_sqwyg"]
+[ext_resource type="AudioStream" uid="uid://ca06cceiy6yfu" path="res://snd/static.mp3" id="4_euy7t"]
+
+[sub_resource type="Theme" id="Theme_rmt0s"]
+default_font = ExtResource("1_mqjra")
+default_font_size = 24
+/colors/Color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgiw1"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ImageTexture" id="ImageTexture_6mxy6"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_rmt0s")
+script = ExtResource("1_6lvcs")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dgiw1")
+
+[node name="PlayerTextArea" type="RichTextLabel" parent="Panel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -1032.0
+offset_bottom = -616.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_constants/line_separation = 10
+custom_effects = [ExtResource("3_cw53f")]
+visible_characters_behavior = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SceneImageTexRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("ImageTexture_6mxy6")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PromptTextArea" type="RichTextLabel" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+bbcode_enabled = true
+text = "[type]Testing..."
+fit_content = true
+scroll_active = false
+custom_effects = [ExtResource("3_cw53f")]
+threaded = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sqwyg")
+autoplay = true
+mix_target = 1
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_euy7t")
+volume_db = -20.0
+autoplay = true
+mix_target = 1
+parameters/looping = true

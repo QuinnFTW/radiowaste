@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbpc4tsfn1j7b"]
+
+[ext_resource type="Script" path="res://src/intro_controller.gd" id="1_6lvcs"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_6mxy6"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6lvcs")
+
+[node name="PlayerTextArea" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 448.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 384.0
+offset_right = -384.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SceneImageTexRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("ImageTexture_6mxy6")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="PromptTextArea" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Testing..."
+fit_content = true
+scroll_active = false
+threaded = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+alignment = 1
