@@ -8,13 +8,15 @@ var current_scene = {}
 var current_scene_idx = 0
 var current_prompt = ""
 var current_choices = []
-var player_text_format = "Hit Points: {}/10\nMental State: {}\nInventory: {}\nTraits: {}\nFitness: {}\nTenacity: {}\nAcuity: {}\nUncanny: {}\nFortune: {}\nFood: {}\nWater: {}\n"
+var player_text_format = "Hit Points: {}/10\nMental State: {}\nFitness: {}\nTenacity: {}\nAcuity: {}\nUncanny: {}\nFortune: {}"
+var inventory_text_format = "Food: {}\nWater: {}\nInventory:\n{}\nTraits:\n{}\n"
 
 # Initialize nodes
 @onready var SceneImage := get_node("Panel/HBoxContainer/VBoxContainer/SceneImageTexRect")
 @onready var PromptText := get_node("Panel/HBoxContainer/VBoxContainer/PromptTextArea")
 @onready var ChoiceList := get_node("Panel/HBoxContainer/VBoxContainer/ScrollContainer/ChoiceContainer")
-@onready var PlayerText := get_node("Panel/PlayerTextArea")
+@onready var PlayerText := get_node("Panel/StatButton/PlayerTextArea")
+@onready var InventoryText := get_node("Panel/InvButton/InventoryTextArea")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -62,26 +64,31 @@ func _process(_delta: float) -> void:
 	elif player["ms"] < -7:
 		end_game()
 	
-	var text_arr = []
-	text_arr.append(player["hp"])
+	var player_arr = []
+	player_arr.append(player["hp"])
 	if player["ms"] > 3:
-		text_arr.append("jazzed")
+		player_arr.append("jazzed")
 	elif player["ms"] > -1 && player["ms"] <= 3:
-		text_arr.append("solid")
+		player_arr.append("solid")
 	elif player["ms"] >= -3 && player["ms"] < 0:
-		text_arr.append("downbeat")
+		player_arr.append("downbeat")
 	elif player["ms"] < -3:
-		text_arr.append("wasted")
-	text_arr.append(get_player_inventory())
-	text_arr.append(get_player_traits())
-	text_arr.append(player["fit"])
-	text_arr.append(player["ten"])
-	text_arr.append(player["acu"])
-	text_arr.append(player["unc"])
-	text_arr.append(player["for"])
-	text_arr.append(player["fod"])
-	text_arr.append(player["wat"])
-	PlayerText.text = player_text_format.format(text_arr, "{}")
+		player_arr.append("wasted")
+	player_arr.append(player["fit"])
+	player_arr.append(player["ten"])
+	player_arr.append(player["acu"])
+	player_arr.append(player["unc"])
+	player_arr.append(player["for"])
+	
+	PlayerText.text = player_text_format.format(player_arr, "{}")
+	
+	var inv_arr = []
+	inv_arr.append(player["fod"])
+	inv_arr.append(player["wat"])
+	inv_arr.append(get_player_inventory())
+	inv_arr.append(get_player_traits())
+	
+	PlayerText.text = player_text_format.format(inv_arr, "{}")
 
 	pass
 
@@ -104,19 +111,19 @@ func end_game() -> void:
 		create_choice(choice)
 
 func get_player_inventory() -> String:
-	var inv_list = []
+	var inv_list = ""
 	for inv in player["inv"]:
-		inv_list.append(items[inv])
-	return arr_to_str(inv_list)
+		inv_list = inv_list + items[inv] + "\n"
+	return inv_list
 	
 func get_player_traits() -> String:
-	var trt_list = []
+	var trt_list = ""
 	if player["trt"].size() == 0 :
-		return "None"
+		return "None\n"
 	
 	for trt in player["trt"]:
-		trt_list.append(traits[trt])
-	return arr_to_str(trt_list)
+		trt_list = trt_list + traits[trt] + "\n"
+	return trt_list
 	
 func arr_to_str(array) -> String:
 	var new_str = ""

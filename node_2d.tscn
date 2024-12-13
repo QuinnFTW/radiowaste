@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbpc4tsfn1j7b"]
+[gd_scene load_steps=13 format=3 uid="uid://dbpc4tsfn1j7b"]
 
 [ext_resource type="Script" path="res://src/intro_controller.gd" id="1_6lvcs"]
 [ext_resource type="FontFile" uid="uid://cdxdc35xww8br" path="res://fnt/whitrabt.ttf" id="1_mqjra"]
 [ext_resource type="RichTextEffect" uid="uid://d1cvchqrtacfk" path="res://fnt/type_effect.tres" id="3_cw53f"]
 [ext_resource type="AudioStream" uid="uid://b23k047b7ly05" path="res://snd/wasteland_windy.mp3" id="3_sqwyg"]
+[ext_resource type="Texture2D" uid="uid://cjdbsxt0bfpid" path="res://img/backpack1.png" id="4_b0rsg"]
 [ext_resource type="AudioStream" uid="uid://ca06cceiy6yfu" path="res://snd/static.mp3" id="4_euy7t"]
+[ext_resource type="Script" path="res://src/inv_button.gd" id="5_b1u73"]
+[ext_resource type="Texture2D" uid="uid://c020lbkp65ok6" path="res://img/stats1.png" id="6_htaei"]
+[ext_resource type="Script" path="res://src/stat_button.gd" id="7_ofml6"]
 
 [sub_resource type="Theme" id="Theme_rmt0s"]
 default_font = ExtResource("1_mqjra")
@@ -24,6 +28,7 @@ anchor_bottom = 1.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = SubResource("Theme_rmt0s")
 script = ExtResource("1_6lvcs")
 
@@ -32,22 +37,77 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dgiw1")
 
-[node name="PlayerTextArea" type="RichTextLabel" parent="Panel"]
-layout_mode = 2
+[node name="StatButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.004
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = 16.0
-offset_right = -1032.0
-offset_bottom = -616.0
+offset_top = 11.808
+offset_right = -1320.0
+offset_bottom = -968.0
+toggle_mode = true
+icon = ExtResource("6_htaei")
+expand_icon = true
+script = ExtResource("7_ofml6")
+
+[node name="PlayerTextArea" type="RichTextLabel" parent="Panel/StatButton"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 352.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_constants/line_separation = 10
+text = "Hit Points: 
+Mental State: 
+Fitness: 
+Tenacity: 
+Acuity: 
+Uncanny: 
+Fortune: "
 custom_effects = [ExtResource("3_cw53f")]
 visible_characters_behavior = 1
+
+[node name="InvButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.004
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1320.0
+offset_top = 11.808
+offset_right = -16.0
+offset_bottom = -968.0
+toggle_mode = true
+icon = ExtResource("4_b0rsg")
+expand_icon = true
+script = ExtResource("5_b1u73")
+
+[node name="InventoryTextArea" type="RichTextLabel" parent="Panel/InvButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -248.0
+offset_top = 64.0
+offset_bottom = 352.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Food: 
+Water: 
+Inventory:
+
+Traits:
+
+"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -60,18 +120,21 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+mouse_filter = 2
 theme_override_constants/separation = 20
 alignment = 1
 
 [node name="SceneImageTexRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 texture = SubResource("ImageTexture_6mxy6")
 expand_mode = 3
 stretch_mode = 5
@@ -80,6 +143,7 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
+mouse_filter = 1
 theme_override_colors/default_color = Color(0, 1, 0, 1)
 bbcode_enabled = true
 text = "[type]Testing..."
@@ -87,6 +151,67 @@ fit_content = true
 scroll_active = false
 custom_effects = [ExtResource("3_cw53f")]
 threaded = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClassButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClassButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClassButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClassButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClassButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
