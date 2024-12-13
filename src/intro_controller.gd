@@ -17,6 +17,8 @@ var inventory_text_format = "Food: {}\nWater: {}\nInventory:\n{}\nTraits:\n{}\n"
 @onready var ChoiceList := get_node("Panel/HBoxContainer/VBoxContainer/ScrollContainer/ChoiceContainer")
 @onready var PlayerText := get_node("Panel/StatButton/PlayerTextArea")
 @onready var InventoryText := get_node("Panel/InvButton/InventoryTextArea")
+@onready var EffectText := get_node("Panel/EffectTextArea")
+@onready var AnimPlayer := get_node("AnimationPlayer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -88,7 +90,7 @@ func _process(_delta: float) -> void:
 	inv_arr.append(get_player_inventory())
 	inv_arr.append(get_player_traits())
 	
-	PlayerText.text = player_text_format.format(inv_arr, "{}")
+	InventoryText.text = inventory_text_format.format(inv_arr, "{}")
 
 	pass
 
@@ -99,6 +101,7 @@ func end_game() -> void:
 	var scene = prologue_script["scenes"][0]
 	current_scene = scene
 	current_scene_idx = 0
+	AnimPlayer.play("screen_fade_anim")
 	SceneImage.texture = load("res://img/" + scene["picture"])
 	var prompt = scene["prompts"][0]
 	
@@ -160,8 +163,11 @@ func load_scene(scene_index, prompt_index) -> void:
 	# Set scene image
 	var scene = prologue_script["scenes"][scene_index]
 	current_scene = scene
+	if current_scene_idx != scene_index :
+		AnimPlayer.play("screen_fade_anim")
+		SceneImage.texture = load("res://img/" + scene["picture"])
+		await get_tree().create_timer(2.5).timeout
 	current_scene_idx = scene_index
-	SceneImage.texture = load("res://img/" + scene["picture"])
 	var prompt = scene["prompts"][prompt_index]
 	
 	# Set prompt text
@@ -262,8 +268,14 @@ func choice_clicked(id) -> void:
 	# Modify player variables
 	parse_effect(choice["effect"])
 	
+	var mod_effect = ""
 	if choice["mod"] != "" :
-		parse_mod(choice["mod"])
+		mod_effect = parse_mod(choice["mod"])
+	
+	if !PlayerText.visible:
+		var text = translate_effect_and_mod(choice["effect"], mod_effect)
+		AnimPlayer.play("effect_text_anim")
+		EffectText.text = text
 	
 	# Load new scene / prompt
 	var dest = choice["dest"]
@@ -319,7 +331,8 @@ func parse_effect(effect_str) -> void:
 	
 	pass
 	
-func parse_mod(mod_str) -> void:
+func parse_mod(mod_str) -> String:
+	var mod_return = ""
 	var mod_arr = mod_str.split(";", false)
 	
 	for single_str in mod_arr :	
@@ -330,6 +343,7 @@ func parse_mod(mod_str) -> void:
 				var tag = parse_tag(str_arr[1])
 				var num = parse_num(str_arr[1])
 				player[tag] += num
+				mod_return = mod_return + num + tag + ";" 
 		elif str_arr[0].contains("%"):
 			var rng = RandomNumberGenerator.new()
 			var my_random_number = rng.randi_range(0, 100)
@@ -338,8 +352,73 @@ func parse_mod(mod_str) -> void:
 				var tag = parse_tag(str_arr[1])
 				var num = parse_num(str_arr[1])
 				player[tag] += num
+				mod_return = mod_return + num + tag + ";" 
 	
-	pass
+	return mod_return
+	
+func translate_effect_and_mod(effect_str, mod_str) -> String:
+	var translation = ""
+	
+	var effect_arr = effect_str.split(";", false)
+	var mod_arr = mod_str.split(";", false)
+	
+	for effect in effect_arr :	
+		if effect.contains(":"):
+			var item_arr = effect.split(":", false) 
+			if item_arr[0] == "inv":
+				var item = items[item_arr[1]]
+				if effect.contains("+"):
+					translation = translation + "Gained: " + item + "\n"
+				else :
+					translation = translation + "Lost: " + item + "\n"
+			if item_arr[0] == "trt":
+				var trt = items[item_arr[1]]
+				translation = translation + "Gained Trait: " + trt + "\n"
+		else :
+			var tag = parse_tag(effect)
+			var num = parse_num(effect)
+			
+			for mod in mod_arr :
+				var tag_mod = parse_tag(mod)
+				var num_mod = parse_num(mod)
+				if tag == tag_mod:
+					num += num_mod
+			
+			match tag:
+				"time":
+					translation = translation + "+" + str(num) + " Time\n"
+				"hp":
+					if(num > 0) :
+						translation = translation + "+" + str(num) + " HP\n"
+					else :
+						translation = translation + str(num) + " HP\n"
+				"ms":
+					if(num > 0) :
+						translation = translation + "+" + str(num) + " MS\n"
+					else :
+						translation = translation + str(num) + " MS\n"
+				"fit":
+					translation = translation + "+" + str(num) + " Fitness\n"
+				"ten":
+					translation = translation + "+" + str(num) + " Tenacity\n"
+				"acu":
+					translation = translation + "+" + str(num) + " Acuity\n"
+				"unc":
+					translation = translation + "+" + str(num) + " Uncanny\n"
+				"for":
+					translation = translation + "+" + str(num) + " Fortune\n"
+				"fod":
+					if(num > 0) :
+						translation = translation + "Gained " + str(num) + " Food\n"
+					else :
+						translation = translation + "Lost " + str(num) + " Food\n"
+				"wat":
+					if(num > 0) :
+						translation = translation + "Gained " + str(num) + " Water\n"
+					else :
+						translation = translation + "Lost " + str(num) + " Water\n"
+	
+	return translation
 	
 func parse_percent(effect_str) -> int:
 	var regex = RegEx.new()

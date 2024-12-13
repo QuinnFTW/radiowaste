@@ -132,17 +132,12 @@
 		},
 		{
 			"id" : "27",
-			"name" : "Broken Tech",
+			"name" : "Waterlogged Journal",
 			"stat" : ""
 		},
 		{
 			"id" : "28",
-			"name" : "Rusty Knife",
-			"stat" : ""
-		},
-		{
-			"id" : "29",
-			"name" : "Waterlogged Journal",
+			"name" : "Geiger Counter",
 			"stat" : ""
 		}
 	],
@@ -254,6 +249,14 @@
 		{
 			"id" : "27",
 			"name" : "Static Solipsism"
+		},
+		{
+			"id" : "28",
+			"name" : "Experienced Hiker"
+		},
+		{
+			"id" : "29",
+			"name" : "Tick Tick Tick"
 		}
 	],
 	"scenes" : [
@@ -1578,39 +1581,69 @@
 						{
 							"id" : "01",
 							"text" : "You craft some makeshift stilts out of loose branches and vines to keep yourself out of the water. They repeatedly break, but do keep you dry.",
-							"effect" : "+2time;+1fit",
-							"mod" : "%25>-3hp",
+							"effect" : "+4time;+1acu",
 							"dest" : "02",
 						},
 						{
 							"id" : "02",
-							"text" : "You don’t dare put your life in the hands of some moldy cables, but you can scavenge the pylons for working circuits.",
-							"effect" : "+3time;+1acu;+inv:27",
+							"text" : "You start trudging through the muddy water, determined to take the shortest path possible and damn the consequences.",
+							"effect" : "+2time;-2hp;+1ten",
 							"dest" : "02",
 						},
 						{
 							"id" : "03",
-							"text" : "You are looking up at the pylons when you trip, landing face-first in a puddle of water. Something glints in the mud when you stand up.",
-							"effect" : "+2time;+1for;-2hp;+inv:28",
+							"text" : "You carefully navigate a path among the few patches of solid dirt while jumping over what water you can.",
+							"effect" : "+3time;-1hp;+1fit",
 							"dest" : "02",
+						},
+						{
+							"id" : "04",
+							"text" : "You start going, only to suddenly feel a bony hand grip your ankle! Yanking your leg away, you see it is the corpse of another poor fool.",
+							"effect" : "+3time;-2ms;+1unc;+inv:27",
+							"dest" : "02",
+						}
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "Making it to a small patch of dry land, you notice that large portions of the forest within the swamp aren’t made of trees, but old power lines and pylons, some cables still standing. The pylons in particular seem well sturdy despite the ravages of time. Seeing an opportunity to shorten your trip and stay out of the water, you consider your options. Reaching a conclusion...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You try your hand at climbing the pylons and crawling along the cables. It’s dangerous, but does keep you well away from the water.",
+							"effect" : "+2time;+1fit",
+							"mod" : "%25>-3hp",
+							"dest" : "03",
+						},
+						{
+							"id" : "02",
+							"text" : "You don’t dare put your life in the hands of some moldy cables, but you can scavenge the pylons for working circuits.",
+							"effect" : "+3time;+1acu;+inv:12",
+							"dest" : "03",
+						},
+						{
+							"id" : "03",
+							"text" : "You are looking up at the pylons when you trip, landing face-first in a puddle of water. Something glints in the mud when you stand up.",
+							"effect" : "+2time;+1for;-2hp;+inv:27",
+							"dest" : "03",
 						},
 						{
 							"id" : "04",
 							"text" : "You listen to the creaks and groans of the old metal and tarnished connectors. They mourn their walking brethren.",
 							"effect" : "+1time;-2ms;+1unc",
-							"dest" : "02",
+							"dest" : "03",
 						},
 						{
 							"id" : "05",
 							"text" : "You think you might be able to use your grappling hook in a few spots, but only if you really trust in your construction skills and upper body strength.",
-							"effect" : "+4time;+2ms;+1fit;+1ten",
-							"req" : "inv:26",
-							"dest" : "02",
+							"effect" : "+3time;+2ms;+1fit;+1acu",
+							"req" : "inv:27",
+							"dest" : "03",
 						},
 					]
 				},
 				{				
-					"id" : "02",
+					"id" : "03",
 					"text" : "Almost out of the wetlands, you can see the edge of the forest not far beyond. However, before you can get your hopes up, something else catches your eye. A ripple in the waters just in front of you. You had hoped your thoughts of things living in the water was just a fantasy, but it seems to not be the case. Finding out what it is might be the last thing you do. Instead...",
 					"choices" : [
 						{
@@ -1641,9 +1674,404 @@
 							"id" : "05",
 							"text" : "The journal you found details how this lake used to be home to a particular breed of leech, and how they were easily distracted with a bit of raw meat.",
 							"effect" : "+2time;-1fod;+1acu;+1for",
-							"req" : "inv:29",
+							"req" : "inv:26",
 							"dest" : "scn17",
 						}
+					]
+				}
+			]
+		},
+		{	
+			"id" : "15",
+			"picture" : "forest2.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "The old roads leading through the forest were clearly never that well maintained, and are now almost unrecognizable. Still, having cleared away most of the large trees, they’re faster than trying to cut a path straight through the brush. After several hours of walking, you notice that the road abruptly ends at the ruin of an old concrete bunker. With the door ajar and eerie darkness within, it’s not an extremely welcoming sight. Still, with it being this remote, it could be a valuable treasure trove of supplies. After mustering your courage...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You find the bunker mostly empty, save for some old munitions used by whatever army once held sway here.",
+							"effect" : "+2time;+1for;+inv:14",
+							"dest" : "02"
+						},
+						{
+							"id" : "02",
+							"text" : "You discover that a ferocious beast has been making its home here! Unwilling to flee, you kill the animal in a brutal struggle.",
+							"effect" : "+2time;-5hp;+1fit;+3fod",
+							"mod" : "inv:16>+2hp;inv:14>+2hp",
+							"dest" : "02"
+						},
+						{
+							"id" : "03",
+							"text" : "You hear old whispers throughout the concrete hovel, voices from an era long since past. You feel guilt in robbing their graves.",
+							"effect" : "+2time;-2ms;+1unc;+2fod;+1wat",
+							"dest" : "02"
+						},
+						{
+							"id" : "04",
+							"text" : "You find a squatter who is more than willing to trade for some of the treasures of the old world.",
+							"effect" : "+2time;+1ten;-2fod;-2wat;+inv:28",
+							"req" : "fod>1;wat>1",
+							"dest" : "02"
+						},
+						{
+							"id" : "05",
+							"text" : "You find the automated commissary still functional despite all this time. It accepts your currency in exchange for all manner of old world treasures.",
+							"effect" : "+2time;+1acu;+1fod;+1wat;+inv:14;+inv:28",
+							"mod" : "-inv:11",
+							"req" : "inv:11",
+							"dest" : "02"
+						}
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "Leaving the bunker behind, you have to backtrack on the road a little ways to find a smaller trail to follow. Whether it was traveled by humans or only animals is impossible to tell at this point. However, it does go north, so it seems your best option. It’s slower going than the road, with the trail in a much worse state. While you hike along the barely-marked path...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You whistle a little ditty to keep your spirits up. It’s a simple tune, but brings fond memories to the forefront of your mind.",
+							"effect" : "+2time;+1ms;+1ten",
+							"dest" : "03"
+						},
+						{
+							"id" : "02",
+							"text" : "You are suddenly overcome by a dense fog. It doesn’t impede your progress, but you swear you can see silhouettes moving in the distance.",
+							"effect" : "+1time;-1ms;+1unc",
+							"dest" : "03"
+						},
+						{
+							"id" : "03",
+							"text" : "You scour the ground for a sturdy walking stick. Having a good one will keep you able to move for longer and put less strain on your legs.",
+							"effect" : "+3time;+1fit;+trt:28",
+							"dest" : "03"
+						},
+						{
+							"id" : "04",
+							"text" : "You accidentally step straight through the roof of an abandoned hunter’s camp. Most everything is rotted, but you spot a few useful supplies.",
+							"effect" : "+2time;-1hp;+1for;+2fod",
+							"dest" : "03"
+						}
+					]
+				},
+				{
+					"id" : "03",
+					"text" : "At this point, you’re not sure if this ever was a trail, or if you were just being ridiculously optimistic. Completely turned around and with only your radio as a guide to which way you should be going, your options seem rather limited. You know you have to keep moving, but that’s about it. You have to do something to either get your bearings or find another trail. Time for...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You to sit down, do some breathing exercises, and get this panic under control. You’ve made it through worse, you’ll get through this.",
+							"effect" : "+3time;+1ms;+1ten",
+							"dest" : "scn16"
+						},
+						{
+							"id" : "02",
+							"text" : "You to just pick a direction and walk. Who cares if it’s north at this point. You’ll get somewhere, eventually.",
+							"effect" : "+2time;+1for",
+							"mod" : "%50>+2ms;%50>-2ms",
+							"dest" : "scn16"
+						},
+						{
+							"id" : "03",
+							"text" : "You to climb one of these trees and get a good vantage point. Once you see what you’re dealing with you can make an informed decision.",
+							"effect" : "+2time;-1hp;+1fit",
+							"dest" : "scn16"
+						},
+						{
+							"id" : "04",
+							"text" : "You to study your surroundings. Even if this is the middle of the forest, there will be signs of the old world trails.",
+							"effect" : "+1time;-2ms;+1acu",
+							"dest" : "scn16"
+						},
+						{
+							"id" : "05",
+							"text" : "Based on your travels so far and your amateur cartography, you are able to get your bearings. If you just stick north and keep walking, you should be okay!",
+							"effect" : "+1time;+1ms;+1for;+1ten",
+							"req" : "inv:09",
+							"dest" : "scn24"
+						},
+					]
+				}
+			]
+		},
+		{
+			"id" : "16",
+			"picture" : "forest3.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "Finally reaching the end of the trail, you are greeted by a forest of another kind. Spires of stone erupt from the earth all around you, forming a landscape so otherworldly and hostile you could almost be convinced you weren’t on Earth any more. Whatever it is, it stands between you and your destination. As you press forward...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You take some time to bandage your wounds. It’s nice to be out of immediate danger for once.",
+							"effect" : "+2time;+1hp;+1fit",
+							"mod" : "inv:19>+2hp",
+							"dest" : "02",
+						},
+						{
+							"id" : "02",
+							"text" : "You climb the tallest spire you can find for a good look at what the next leg of your journey looks like. Maybe admire the view as well.",
+							"effect" : "+2time;+1ms;+1acu",
+							"mod" : "inv:23>+2ms",
+							"dest" : "02",
+						},
+						{
+							"id" : "03",
+							"text" : "You scan the rocks and spires for any left-behind supplies or treasures. Who knows what you’ll find?",
+							"effect" : "+2time;+1for;",
+							"mod" : "%75>+inv:28;%50>+inv:12;%25>+inv:14",
+							"dest" : "02",
+						},
+						{
+							"id" : "04",
+							"text" : "You admire the civilization that must have built all of this. While you never knew them, this was a grand feat. Almost beautiful...",
+							"effect" : "+2time;+1ms;+1unc",
+							"dest" : "02",
+						}
+					]
+				},
+				{				
+					"id" : "02",
+					"text" : "Continuing on, you can feel a malaise start to envelop your mind. Your breath is strained, and your muscles ache terribly. Even your vision starts to swim before you, causing the sharp angles of the spires to take on warped shapes. In a moment of clarity, you remember the signs at the start of the forest. Radiation. With the clock of your life running out...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You sprint for it. Clamber over the concrete, run through the gravel, and just make for the end of this hellscape as quickly as possible.",
+							"effect" : "+1time;-3hp;-3ms;+1fit",
+							"dest" : "03",
+						},
+						{
+							"id" : "02",
+							"text" : "You refuse to give into the failings of your body. You will endure this just like you endured everything else. Through force of will.",
+							"effect" : "+2time;-4hp;-1ms;+1ten",
+							"dest" : "03",
+						},
+						{
+							"id" : "03",
+							"text" : "You realize the radiation must be coming from the ground. If you climb the spires and leap between them, maybe it’ll lessen its effects.",
+							"effect" : "+3time;-2hp;-2ms;+1acu",
+							"dest" : "03",
+						},
+						{
+							"id" : "04",
+							"text" : "You give into despair, letting it drive you to the acceptance of your death. Once you accept that, walking isn’t so bad.",
+							"effect" : "+2ms;-1hp;-4ms;+1unc",
+							"dest" : "03",
+						},
+						{
+							"id" : "05",
+							"text" : "You can use the geiger counter you found to avoid the worst of the radiation. As long as you trust the artifacts of the old world, you should be okay.",
+							"effect" : "+2time;+1for;+trt:29",
+							"req" : "inv:28",
+							"dest" : "03",
+						}
+					]
+				},
+				{				
+					"id" : "03",
+					"text" : "Scrambling through the last of the irradiated zone, you can see the end in sight. The forest of concrete spires giving way to plains nearly makes you tear up with joy. Just as you think you’re finally due a break, you feel the ground beneath you give way, crumbling. You tumble down, sharp rocks and the broken spires threatening to be your end. Reflexively...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "You curl into a tight ball, letting the rocks hit you, but keeping them away from your vital organs. It hurts, but it’s safe too.",
+							"effect" : "+1time;-3hp;+1fit",
+							"mod": "inv:18>hp+2",
+							"dest" : "scn17"
+						},
+						{
+							"id" : "02",
+							"text" : "You look for handholds and small ledges where you might hold on and stop your fall. Your hands will get shredded, but might save your life.",
+							"effect" : "+1time;-3hp;+1acu",
+							"mod": "inv:26>hp+2",
+							"dest" : "scn17"
+						},
+						{
+							"id" : "03",
+							"text" : "You retreat into your mind. You’re already falling and nothing’s going to stop that but solid ground. Just ignore the pain...",
+							"effect" : "+1time;-3ms;+1ten",
+							"dest" : "scn17"
+						},
+						{
+							"id" : "04",
+							"text" : "You somehow miss each sharp spike of concrete and miss the large rocks bound for your head. You bounce around for a while, but count your lucky stars at the bottom. ",
+							"effect" : "+2time;-2hp;+1for",
+							"dest" : "scn17"
+						},
+						{
+							"id" : "05",
+							"text" : "You know this is the end for you, but maybe, just maybe, someone else will learn from you. Then, all of a sudden, the world shifts, and you are at the bottom. Something feels wrong.",
+							"effect" : "+1time;-2ms;+1unc;+1for",
+							"req" : "ms<-3",
+							"dest" : "scn17"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id" : "17",
+			"picture" : "end2.png",
+			"prompts" : [
+				{
+					"id" : "01",
+					"text" : "",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[THE END]",
+							"dest" : "02",
+						}
+					]
+				},
+				{
+					"id" : "02",
+					"text" : "Out of the forest at last, you can see some signs of life among the wastes. Grass covers patches of the dirt and rock. You even heard a bird call in the last hour, you think. The signal on your radio is clearer than ever, and you even have a spring in your step.",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[CONTINUE]",
+							"dest" : "03",
+						},
+						
+					]
+				},
+				{
+					"id" : "03",
+					"text" : "But it can’t be that easy. It never was, and never will be. Not long after you left the towering trees and impotent warning signs behind, everything goes quiet. Even the wind dies down. Your hairs stand on end, and you can feel a crackle in the air when you breathe. The signs all point to one thing. One abomination you had hoped was only a scavenger’s wild tale. A story to keep children in line and within sight.",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[THEY WEREN’T]",
+							"dest" : "04",
+						},
+						
+					]
+				},
+				{
+					"id" : "04",
+					"text" : "The skies are filled with small streaks of white light, cracks in the firmament. In your periphery, you can make out the twisting tendrils of the beast, floating several miles in the air. Coated in the clouds of static they attract, its shape is only visible for a few moments at a time when the lightning flashes. ",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[RUN?]",
+							"dest" : "05",
+						},
+						
+					]
+				},
+				{
+					"id" : "05",
+					"text" : "You couldn’t make it back to the forest even if you tried. They move too quickly, unmoored as they are.",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[HIDE?]",
+							"dest" : "06",
+						},
+						
+					]
+				},
+				{
+					"id" : "06",
+					"text" : "You’re too exposed. There’s nowhere to hide, not here, in the planes of grass and dirt. Even if you buried yourself it would find you.",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[PRAY?]",
+							"dest" : "07",
+						},
+						
+					]
+				},
+				{
+					"id" : "07",
+					"text" : "No point. If there is a God, these were Her angels now. Terrible to behold. Not meant for mortal eyes. ",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[DIE?]",
+							"dest" : "08",
+						},
+						
+					]
+				},
+				{
+					"id" : "08",
+					"text" : "It seems like that’s your only option. Your meager supplies and equipment were never meant to contend with something like this. You frantically search for something, anything that could help you. Something like...",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[THE OLD RADIO]",
+							"req" : "inv:01",
+							"dest" : "09",
+						}
+					]
+				},
+				{
+					"id" : "09",
+					"text" : "It got you into this mess, it can get you out. It crackles to life, the frequencies open to you. Somewhere on the airwaves is a song to help you, to save you. The lightning cracks. The static breaks.\n\nYou listen.\n\nYou are…",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "The Shock Jockey",
+							"req" : "acu>7",
+							"dest" : "scn18",
+						},
+						{
+							"id" : "02",
+							"text" : "The Wave Wrangler",
+							"req" : "fit>7",
+							"dest" : "scn18",
+						},
+						{
+							"id" : "03",
+							"text" : "The Scratch Punk",
+							"req" : "ten>7",
+							"dest" : "scn18",
+						},
+						{
+							"id" : "04",
+							"text" : "The Mystery C",
+							"req" : "unc>7",
+							"dest" : "scn18",
+						},
+						{
+							"id" : "05",
+							"text" : "The Groove Guru",
+							"req" : "for>7",
+							"dest" : "scn18",
+						},
+						{
+							"id" : "06",
+							"text" : "[NOTHING]",
+							"dest" : "10",
+						},
+					]
+				},
+				{
+					"id" : "10",
+					"text" : "You hear another sound. A familiar one. The signal that brought you here in the first place. The broadcast that brought you to die. You never had a choice whether or not to walk the path. You had to. If you had another chance, would you walk the path differently?",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[YES]",
+							"dest" : "11",
+						},
+						
+					]
+				},
+				{
+					"id" : "11",
+					"text" : "Then maybe you will. Another you. Another time. Another ghost on the airwaves...\n\nThe sun scorches your back.",
+					"choices" : [
+						{
+							"id" : "01",
+							"text" : "[CONTINUE]",
+							"dest" : "scn01",
+						},
+						
 					]
 				}
 			]

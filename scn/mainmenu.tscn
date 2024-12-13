@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd3x7hiniiu36"]
+
+[ext_resource type="FontFile" uid="uid://cdxdc35xww8br" path="res://fnt/whitrabt.ttf" id="1_wkb10"]
+[ext_resource type="Texture2D" uid="uid://n61qcyllkehv" path="res://img/radiodials.jpg" id="2_6sa5d"]
+[ext_resource type="Script" path="res://src/new_game_button.gd" id="2_gu1n1"]
+[ext_resource type="Script" path="res://scn/quit_button.gd" id="3_w3xu7"]
+
+[sub_resource type="Theme" id="Theme_3tw2w"]
+default_font = ExtResource("1_wkb10")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04ewd"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3tw2w")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.998
+offset_bottom = 0.0999756
+theme_override_styles/panel = SubResource("StyleBoxFlat_04ewd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 752.0
+offset_top = 432.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="NewGameButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 64
+text = "New Game "
+alignment = 2
+script = ExtResource("2_gu1n1")
+
+[node name="LoadGameButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 64
+disabled = true
+text = "Load Game "
+alignment = 2
+
+[node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 64
+disabled = true
+text = "Options "
+alignment = 2
+
+[node name="CreditsButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 64
+disabled = true
+text = "Credits "
+alignment = 2
+
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 64
+text = "Quit "
+alignment = 2
+script = ExtResource("3_w3xu7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1384.0
+offset_bottom = 384.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 168
+text = "Radiowaste"
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = -39.0
+offset_top = 183.0
+offset_right = 753.0
+offset_bottom = 631.0
+texture = ExtResource("2_6sa5d")
+expand_mode = 5
+stretch_mode = 4
