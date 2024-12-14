@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbpc4tsfn1j7b"]
+[gd_scene load_steps=21 format=3 uid="uid://dbpc4tsfn1j7b"]
 
 [ext_resource type="FontFile" uid="uid://cdxdc35xww8br" path="res://fnt/whitrabt.ttf" id="1_5rus7"]
 [ext_resource type="Script" path="res://src/intro_controller.gd" id="2_uewqd"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://src/inv_button.gd" id="7_vshm8"]
 [ext_resource type="AudioStream" uid="uid://b23k047b7ly05" path="res://snd/wasteland_windy.mp3" id="8_vpj63"]
 [ext_resource type="AudioStream" uid="uid://ca06cceiy6yfu" path="res://snd/static.mp3" id="9_lttv6"]
+[ext_resource type="AudioStream" uid="uid://br033rrp1fw4w" path="res://snd/button.mp3" id="10_20lgs"]
+[ext_resource type="AudioStream" uid="uid://bdgjv3bu0gnmd" path="res://snd/broken_radio.mp3" id="10_25piw"]
+[ext_resource type="AudioStream" uid="uid://cfiqeg5q2lcsp" path="res://snd/daisy_wheel.mp3" id="11_cjp4q"]
 
 [sub_resource type="Theme" id="Theme_rmt0s"]
 default_font = ExtResource("1_5rus7")
@@ -19,22 +22,6 @@ default_font_size = 24
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ImageTexture" id="ImageTexture_6mxy6"]
-
-[sub_resource type="Animation" id="Animation_hlci4"]
-resource_name = "effect_text_anim"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel/EffectTextArea:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.5, 4.5, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 1.0, 1.0, 0.0]
-}
 
 [sub_resource type="Animation" id="Animation_n2t3i"]
 length = 0.001
@@ -62,6 +49,50 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/HBoxContainer/VBoxContainer/PromptTextArea:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_hlci4"]
+resource_name = "effect_text_anim"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/EffectTextArea:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_i1a27"]
+resource_name = "prompt_text"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/HBoxContainer/VBoxContainer/PromptTextArea:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_05h0i"]
 resource_name = "screen_fade_anim"
@@ -83,6 +114,7 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_n2t3i"),
 "effect_text_anim": SubResource("Animation_hlci4"),
+"prompt_text": SubResource("Animation_i1a27"),
 "screen_fade_anim": SubResource("Animation_05h0i")
 }
 
@@ -102,7 +134,8 @@ script = ExtResource("2_uewqd")
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.002
+offset_bottom = -0.156128
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dgiw1")
 
@@ -113,8 +146,8 @@ anchor_top = 0.004
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = 11.808
-offset_right = -1320.0
+offset_top = 11.68
+offset_right = -1808.0
 offset_bottom = -968.0
 toggle_mode = true
 icon = ExtResource("3_27ycs")
@@ -125,9 +158,9 @@ script = ExtResource("4_7pd7c")
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 80.0
+offset_top = 112.0
 offset_right = 256.0
-offset_bottom = 232.0
+offset_bottom = 264.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -148,8 +181,8 @@ anchors_preset = -1
 anchor_top = 0.004
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1320.0
-offset_top = 11.808
+offset_left = 1808.0
+offset_top = 11.68
 offset_right = -16.0
 offset_bottom = -968.0
 toggle_mode = true
@@ -163,10 +196,11 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -248.0
-offset_top = 80.0
-offset_bottom = 352.0
+offset_top = 112.0
+offset_bottom = 384.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/line_separation = 10
 text = "Food: 
 Water: 
 Inventory:
@@ -180,9 +214,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
+offset_left = 328.0
 offset_top = 16.0
-offset_right = -16.0
+offset_right = -320.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -200,6 +234,7 @@ alignment = 1
 [node name="SceneImageTexRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.2
 mouse_filter = 2
 texture = SubResource("ImageTexture_6mxy6")
 expand_mode = 3
@@ -290,26 +325,40 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 25
 
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="EffectTextArea" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 80.0
-offset_right = 400.0
-offset_bottom = 432.0
+offset_top = 448.0
+offset_right = 320.0
+offset_bottom = 1064.0
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BackgroundAudioStream1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_vpj63")
-autoplay = true
 mix_target = 1
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+[node name="BackgroundAudioStream2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_lttv6")
 volume_db = -20.0
-autoplay = true
 mix_target = 1
 parameters/looping = true
+
+[node name="BackgroundAudioStream3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_25piw")
+volume_db = -20.0
+mix_target = 1
+parameters/looping = true
+
+[node name="PromptAudioStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_cjp4q")
+parameters/looping = false
+
+[node name="ButtonAudioStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_20lgs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

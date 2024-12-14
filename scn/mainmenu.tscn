@@ -34,10 +34,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 752.0
+offset_left = 944.0
 offset_top = 432.0
 offset_right = -16.0
-offset_bottom = -16.0
+offset_bottom = -15.9401
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -98,10 +98,9 @@ text = "Radiowaste"
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 layout_mode = 0
-offset_left = -39.0
-offset_top = 183.0
-offset_right = 753.0
-offset_bottom = 631.0
+offset_top = 136.0
+offset_right = 944.0
+offset_bottom = 768.0
 texture = ExtResource("2_6sa5d")
 expand_mode = 5
 stretch_mode = 4

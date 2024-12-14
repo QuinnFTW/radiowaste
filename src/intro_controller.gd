@@ -19,6 +19,11 @@ var inventory_text_format = "Food: {}\nWater: {}\nInventory:\n{}\nTraits:\n{}\n"
 @onready var InventoryText := get_node("Panel/InvButton/InventoryTextArea")
 @onready var EffectText := get_node("Panel/EffectTextArea")
 @onready var AnimPlayer := get_node("AnimationPlayer")
+@onready var BackgroundAudio1 := get_node("BackgroundAudioStream1")
+@onready var BackgroundAudio2 := get_node("BackgroundAudioStream2")
+@onready var BackgroundAudio3 := get_node("BackgroundAudioStream3")
+@onready var ButtonAudio := get_node("ButtonAudioStream")
+@onready var PromptAudio := get_node("PromptAudioStream")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,7 +33,9 @@ func _ready() -> void:
 	if prologue_script == null:
 		print("Script not loaded")
 	else:
+		BackgroundAudio1.play()
 		load_scene(1, 0)
+		BackgroundAudio2.play()
 	
 	# Initialize player
 	player = {
@@ -49,10 +56,6 @@ func _ready() -> void:
 	}
 	
 	pass
-	
-func _input(event):
-	if (event is InputEventMouseButton) and event.pressed:
-		PromptText.text = current_prompt
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -101,18 +104,28 @@ func end_game() -> void:
 	var scene = prologue_script["scenes"][0]
 	current_scene = scene
 	current_scene_idx = 0
+	BackgroundAudio1.stop()
+	BackgroundAudio2.stop()
+	BackgroundAudio3.play()
 	AnimPlayer.play("screen_fade_anim")
 	SceneImage.texture = load("res://img/" + scene["picture"])
+	await get_tree().create_timer(2.5).timeout
 	var prompt = scene["prompts"][0]
+	
+	PromptText.text = ""
+	await get_tree().create_timer(0.25).timeout
 	
 	# Set prompt text
 	current_prompt = prompt["text"]
-	PromptText.text = "[type delay=1.0 speed=40.0]" + current_prompt
+	PromptText.text = "[type delay=1.0 speed=50.0]" + current_prompt
+	PromptAudio.play()
+	await get_tree().create_timer(current_prompt.length * 0.02).timeout
+	PromptAudio.stop()
 	
 	# Set choices
 	for choice in prompt["choices"]:
 		create_choice(choice)
-
+	
 func get_player_inventory() -> String:
 	var inv_list = ""
 	for inv in player["inv"]:
@@ -170,9 +183,19 @@ func load_scene(scene_index, prompt_index) -> void:
 	current_scene_idx = scene_index
 	var prompt = scene["prompts"][prompt_index]
 	
+	PromptText.text = ""
+	await get_tree().create_timer(0.25).timeout
+	
 	# Set prompt text
 	current_prompt = prompt["text"]
-	PromptText.text = "[type delay=1.0 speed=40.0]" + current_prompt
+	PromptText.text = "[type delay=1.0 speed=50.0]" + current_prompt
+	if current_prompt != "" :
+		PromptAudio.play()
+		var time = current_prompt.length() * 0.0202
+		await get_tree().create_timer(time).timeout
+		PromptAudio.stop()
+		
+	await get_tree().create_timer(0.25).timeout
 	
 	# Set choices
 	for choice in prompt["choices"]:
@@ -253,6 +276,8 @@ func does_player_meet_req(req) -> bool:
 	return true
 
 func choice_clicked(id) -> void:
+	ButtonAudio.play()
+	
 	var index = 0
 	for i in len(current_choices) :
 		if current_choices[i]["id"] == id :
@@ -272,10 +297,11 @@ func choice_clicked(id) -> void:
 	if choice["mod"] != "" :
 		mod_effect = parse_mod(choice["mod"])
 	
-	if !PlayerText.visible:
-		var text = translate_effect_and_mod(choice["effect"], mod_effect)
-		AnimPlayer.play("effect_text_anim")
-		EffectText.text = text
+	var text = translate_effect_and_mod(choice["effect"], mod_effect)
+	AnimPlayer.play("effect_text_anim")
+	EffectText.text = text
+	
+	await get_tree().create_timer(0.25).timeout
 	
 	# Load new scene / prompt
 	var dest = choice["dest"]
@@ -365,14 +391,14 @@ func translate_effect_and_mod(effect_str, mod_str) -> String:
 	for effect in effect_arr :	
 		if effect.contains(":"):
 			var item_arr = effect.split(":", false) 
-			if item_arr[0] == "inv":
+			if item_arr[0].contains("inv"):
 				var item = items[item_arr[1]]
 				if effect.contains("+"):
 					translation = translation + "Gained: " + item + "\n"
 				else :
 					translation = translation + "Lost: " + item + "\n"
-			if item_arr[0] == "trt":
-				var trt = items[item_arr[1]]
+			if item_arr[0].contains("trt"):
+				var trt = traits[item_arr[1]]
 				translation = translation + "Gained Trait: " + trt + "\n"
 		else :
 			var tag = parse_tag(effect)
@@ -389,14 +415,14 @@ func translate_effect_and_mod(effect_str, mod_str) -> String:
 					translation = translation + "+" + str(num) + " Time\n"
 				"hp":
 					if(num > 0) :
-						translation = translation + "+" + str(num) + " HP\n"
+						translation = translation + "+" + str(num) + " Hit Points\n"
 					else :
-						translation = translation + str(num) + " HP\n"
+						translation = translation + str(num) + " Hit Points\n"
 				"ms":
 					if(num > 0) :
-						translation = translation + "+" + str(num) + " MS\n"
+						translation = translation + "+" + str(num) + " Mental State\n"
 					else :
-						translation = translation + str(num) + " MS\n"
+						translation = translation + str(num) + " Mental State\n"
 				"fit":
 					translation = translation + "+" + str(num) + " Fitness\n"
 				"ten":
