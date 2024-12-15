@@ -11,6 +11,9 @@ var current_prompt = ""
 var current_choices = []
 var player_text_format = "Hit Points: {}/10\nMental State: {}\nFitness: {}\nTenacity: {}\nAcuity: {}\nUncanny: {}\nFortune: {}"
 var inventory_text_format = "Food: {}\nWater: {}\nInventory:\n{}\nTraits:\n{}\n"
+var prompt_timer := Timer.new()
+var skipped_prompt_typing = false
+var is_loading = true
 
 # Initialize nodes
 @onready var SceneImage := get_node("Panel/HBoxContainer/VBoxContainer/SceneImageTexRect")
@@ -19,7 +22,8 @@ var inventory_text_format = "Food: {}\nWater: {}\nInventory:\n{}\nTraits:\n{}\n"
 @onready var PlayerText := get_node("Panel/StatButton/PlayerTextArea")
 @onready var InventoryText := get_node("Panel/InvButton/InventoryTextArea")
 @onready var EffectText := get_node("Panel/EffectTextArea")
-@onready var AnimPlayer := get_node("AnimationPlayer")
+@onready var ScreenAnimPlayer := get_node("ScreenAnimationPlayer")
+@onready var EffectAnimPlayer := get_node("EffectAnimationPlayer")
 @onready var BackgroundAudio1 := get_node("BackgroundAudioStream1")
 @onready var BackgroundAudio2 := get_node("BackgroundAudioStream2")
 @onready var BackgroundAudio3 := get_node("BackgroundAudioStream3")
@@ -29,6 +33,10 @@ var inventory_text_format = "Food: {}\nWater: {}\nInventory:\n{}\nTraits:\n{}\n"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	read_script()
+	
+	add_child(prompt_timer)
+	prompt_timer.one_shot = true
+	prompt_timer.timeout.connect(_stop_prompt_sound)
 	
 	# Load first scene
 	if prologue_script == null:
@@ -96,7 +104,25 @@ func _process(_delta: float) -> void:
 	
 	InventoryText.text = inventory_text_format.format(inv_arr, "{}")
 
+func _input(event):
+	if (event is InputEventMouseButton) and event.pressed and is_loading and !skipped_prompt_typing:
+		skipped_prompt_typing = true
+		PromptText.text = current_prompt
+		prompt_timer.stop()
+		prompt_timer.emit_signal("timeout")
+		
+		# Set choices
+		if current_choices.size() == 0:
+			var prompt = current_scene["prompts"][current_prompt_idx]
+			for choice in prompt["choices"]:
+				create_choice(choice)
+		
+		is_loading = false
+
 	pass
+	
+func _stop_prompt_sound():
+	PromptAudio.stop()
 	
 # Read script from json file
 func read_script() -> void:
@@ -126,16 +152,38 @@ func read_script() -> void:
 func load_scene(scene_index, prompt_index) -> void:
 	PromptText.text = ""
 	
+	if scene_index == 01 && prompt_index == 01:
+		# Initialize player
+		player = {
+			"hp": 10,
+			"ms": 0,
+			"inv" : [
+				"01"
+			],
+			"trt" : [],
+			"fit" : 0,
+			"ten" : 0,
+			"acu" : 0,
+			"unc" : 0,
+			"for" : 0,
+			"fod" : 0,
+			"wat" : 0,
+			"time" : 0
+		}
+	
 	# Set scene image
 	var scene = prologue_script["scenes"][scene_index]
+	var new_scene = current_scene_idx != scene_index
 	current_scene = scene
-	if current_scene_idx != scene_index :
-		AnimPlayer.play("screen_fade_anim")
-		SceneImage.texture = load("res://img/" + scene["picture"])
-		await get_tree().create_timer(2.5).timeout
 	current_scene_idx = scene_index
 	current_prompt_idx = prompt_index
 	var prompt = scene["prompts"][prompt_index]
+	if  new_scene:
+		ScreenAnimPlayer.play("screen_fade_anim")
+		SceneImage.texture = load("res://img/" + scene["picture"])
+		is_loading = true
+		await get_tree().create_timer(1.75).timeout
+	is_loading = true
 	
 	await get_tree().create_timer(0.25).timeout
 	
@@ -145,16 +193,22 @@ func load_scene(scene_index, prompt_index) -> void:
 	if current_prompt != "" :
 		PromptAudio.play()
 		var time = current_prompt.length() * 0.0202
-		await get_tree().create_timer(time).timeout
-		
-		PromptAudio.stop()
+		prompt_timer.wait_time = time
+		prompt_timer.start()
+		await prompt_timer.timeout
 		
 	await get_tree().create_timer(0.25).timeout
+	
+	if skipped_prompt_typing:
+		is_loading = false
+		skipped_prompt_typing = false;
+		return
 	
 	# Set choices
 	for choice in prompt["choices"]:
 		create_choice(choice)
 	
+	is_loading = false
 	pass
 
 func end_game() -> void:
@@ -168,11 +222,11 @@ func end_game() -> void:
 	BackgroundAudio1.stop()
 	BackgroundAudio2.stop()
 	BackgroundAudio3.play()
-	AnimPlayer.play("screen_fade_anim")
+	ScreenAnimPlayer.play("screen_fade_anim")
 	SceneImage.texture = load("res://img/" + scene["picture"])
-	await get_tree().create_timer(2.5).timeout
-	var prompt = scene["prompts"][0]
+	await get_tree().create_timer(1.75).timeout
 	
+	var prompt = scene["prompts"][0]
 	PromptText.text = ""
 	await get_tree().create_timer(0.25).timeout
 	
@@ -180,10 +234,15 @@ func end_game() -> void:
 	current_prompt = prompt["text"]
 	PromptText.text = "[type delay=1.0 speed=50.0]" + current_prompt
 	PromptAudio.play()
-	await get_tree().create_timer(current_prompt.length * 0.0202).timeout
-	PromptAudio.stop()
+	prompt_timer.start()
+	await prompt_timer.timeout
 	
 	await get_tree().create_timer(0.25).timeout
+	
+	if skipped_prompt_typing:
+		skipped_prompt_typing = false
+		is_loading = false
+		return
 	
 	# Set choices
 	for choice in prompt["choices"]:
@@ -284,6 +343,7 @@ func does_player_meet_req(req) -> bool:
 
 func choice_clicked(id) -> void:
 	ButtonAudio.play()
+	EffectAnimPlayer.stop(false)
 	
 	var index = 0
 	for i in len(current_choices) :
@@ -305,7 +365,7 @@ func choice_clicked(id) -> void:
 		mod_effect = parse_mod(choice["mod"])
 	
 	var text = translate_effect_and_mod(choice["effect"], mod_effect)
-	AnimPlayer.play("effect_text_anim")
+	EffectAnimPlayer.play("effect_text_anim")
 	EffectText.text = text
 	
 	await get_tree().create_timer(0.25).timeout
@@ -376,7 +436,7 @@ func parse_mod(mod_str) -> String:
 				var tag = parse_tag(str_arr[1])
 				var num = parse_num(str_arr[1])
 				player[tag] += num
-				mod_return = mod_return + num + tag + ";" 
+				mod_return = mod_return + str(num) + tag + ";" 
 		elif str_arr[0].contains("%"):
 			var rng = RandomNumberGenerator.new()
 			var my_random_number = rng.randi_range(0, 100)
@@ -385,7 +445,7 @@ func parse_mod(mod_str) -> String:
 				var tag = parse_tag(str_arr[1])
 				var num = parse_num(str_arr[1])
 				player[tag] += num
-				mod_return = mod_return + num + tag + ";" 
+				mod_return = mod_return + str(num) + tag + ";" 
 	
 	return mod_return
 	
