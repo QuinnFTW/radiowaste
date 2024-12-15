@@ -610,7 +610,7 @@
 						{
 							"id" : "05",
 							"text" : "You realize that if you’re going to have to slow down, you might as well see what treasures this city still holds.",
-							"dest" : "scn06"
+							"dest" : "scn08"
 						},
 					]
 				},

@@ -6,6 +6,7 @@ var traits = {}
 var player = {}
 var current_scene = {}
 var current_scene_idx = 0
+var current_prompt_idx = 0
 var current_prompt = ""
 var current_choices = []
 var player_text_format = "Hit Points: {}/10\nMental State: {}\nFitness: {}\nTenacity: {}\nAcuity: {}\nUncanny: {}\nFortune: {}"
@@ -96,57 +97,7 @@ func _process(_delta: float) -> void:
 	InventoryText.text = inventory_text_format.format(inv_arr, "{}")
 
 	pass
-
-func end_game() -> void:
-	PlayerText.text = ""
 	
-	# Set scene image
-	var scene = prologue_script["scenes"][0]
-	current_scene = scene
-	current_scene_idx = 0
-	BackgroundAudio1.stop()
-	BackgroundAudio2.stop()
-	BackgroundAudio3.play()
-	AnimPlayer.play("screen_fade_anim")
-	SceneImage.texture = load("res://img/" + scene["picture"])
-	await get_tree().create_timer(2.5).timeout
-	var prompt = scene["prompts"][0]
-	
-	PromptText.text = ""
-	await get_tree().create_timer(0.25).timeout
-	
-	# Set prompt text
-	current_prompt = prompt["text"]
-	PromptText.text = "[type delay=1.0 speed=50.0]" + current_prompt
-	PromptAudio.play()
-	await get_tree().create_timer(current_prompt.length * 0.02).timeout
-	PromptAudio.stop()
-	
-	# Set choices
-	for choice in prompt["choices"]:
-		create_choice(choice)
-	
-func get_player_inventory() -> String:
-	var inv_list = ""
-	for inv in player["inv"]:
-		inv_list = inv_list + items[inv] + "\n"
-	return inv_list
-	
-func get_player_traits() -> String:
-	var trt_list = ""
-	if player["trt"].size() == 0 :
-		return "None\n"
-	
-	for trt in player["trt"]:
-		trt_list = trt_list + traits[trt] + "\n"
-	return trt_list
-	
-func arr_to_str(array) -> String:
-	var new_str = ""
-	for item in array:
-		new_str = new_str + "," + item
-	return new_str.substr(1, new_str.length())
-
 # Read script from json file
 func read_script() -> void:
 	var script_file = FileAccess.open("res://doc/prologue.json", FileAccess.READ)
@@ -173,6 +124,8 @@ func read_script() -> void:
 
 # Load the scene at the given index and the prompt with the given index from that scene
 func load_scene(scene_index, prompt_index) -> void:
+	PromptText.text = ""
+	
 	# Set scene image
 	var scene = prologue_script["scenes"][scene_index]
 	current_scene = scene
@@ -181,9 +134,9 @@ func load_scene(scene_index, prompt_index) -> void:
 		SceneImage.texture = load("res://img/" + scene["picture"])
 		await get_tree().create_timer(2.5).timeout
 	current_scene_idx = scene_index
+	current_prompt_idx = prompt_index
 	var prompt = scene["prompts"][prompt_index]
 	
-	PromptText.text = ""
 	await get_tree().create_timer(0.25).timeout
 	
 	# Set prompt text
@@ -193,6 +146,7 @@ func load_scene(scene_index, prompt_index) -> void:
 		PromptAudio.play()
 		var time = current_prompt.length() * 0.0202
 		await get_tree().create_timer(time).timeout
+		
 		PromptAudio.stop()
 		
 	await get_tree().create_timer(0.25).timeout
@@ -200,8 +154,61 @@ func load_scene(scene_index, prompt_index) -> void:
 	# Set choices
 	for choice in prompt["choices"]:
 		create_choice(choice)
-		
+	
 	pass
+
+func end_game() -> void:
+	PlayerText.text = ""
+	
+	# Set scene image
+	var scene = prologue_script["scenes"][0]
+	current_scene = scene
+	current_scene_idx = 0
+	current_prompt_idx = 0
+	BackgroundAudio1.stop()
+	BackgroundAudio2.stop()
+	BackgroundAudio3.play()
+	AnimPlayer.play("screen_fade_anim")
+	SceneImage.texture = load("res://img/" + scene["picture"])
+	await get_tree().create_timer(2.5).timeout
+	var prompt = scene["prompts"][0]
+	
+	PromptText.text = ""
+	await get_tree().create_timer(0.25).timeout
+	
+	# Set prompt text
+	current_prompt = prompt["text"]
+	PromptText.text = "[type delay=1.0 speed=50.0]" + current_prompt
+	PromptAudio.play()
+	await get_tree().create_timer(current_prompt.length * 0.0202).timeout
+	PromptAudio.stop()
+	
+	await get_tree().create_timer(0.25).timeout
+	
+	# Set choices
+	for choice in prompt["choices"]:
+		create_choice(choice)
+	
+func get_player_inventory() -> String:
+	var inv_list = ""
+	for inv in player["inv"]:
+		inv_list = inv_list + items[inv] + "\n"
+	return inv_list
+	
+func get_player_traits() -> String:
+	var trt_list = ""
+	if player["trt"].size() == 0 :
+		return "None\n"
+	
+	for trt in player["trt"]:
+		trt_list = trt_list + traits[trt] + "\n"
+	return trt_list
+	
+func arr_to_str(array) -> String:
+	var new_str = ""
+	for item in array:
+		new_str = new_str + "," + item
+	return new_str.substr(1, new_str.length())
 
 func create_choice(choice) -> void:
 	var id = choice["id"]
